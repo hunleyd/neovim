@@ -1,0 +1,5 @@
+require("hunleyd.packer")
+require("hunleyd.remap")
+require("hunleyd.set")
+require("hunleyd.autocmd")
+require("hunleyd.colors")
