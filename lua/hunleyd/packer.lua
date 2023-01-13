@@ -42,7 +42,10 @@ return require('packer').startup(function(use)
     use 'Einenlum/yaml-revealer'
 
     -- automatic mgmt of hlsearch
-    use("asiryk/auto-hlsearch.nvim")
+    use 'asiryk/auto-hlsearch.nvim'
+
+    -- automatic mgmt of soft/hard wrap
+    use 'andrewferrier/wrapping.nvim'
 
     -- telescope
     use {

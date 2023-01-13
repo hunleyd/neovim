@@ -214,6 +214,11 @@ _G.packer_plugins = {
     path = "/home/doug/.local/share/nvim/site/pack/packer/start/vim-polyglot",
     url = "https://github.com/sheerun/vim-polyglot"
   },
+  ["wrapping.nvim"] = {
+    loaded = true,
+    path = "/home/doug/.local/share/nvim/site/pack/packer/start/wrapping.nvim",
+    url = "https://github.com/andrewferrier/wrapping.nvim"
+  },
   ["yaml-revealer"] = {
     loaded = true,
     path = "/home/doug/.local/share/nvim/site/pack/packer/start/yaml-revealer",
