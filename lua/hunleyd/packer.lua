@@ -44,9 +44,6 @@ return require('packer').startup(function(use)
     -- automatic mgmt of hlsearch
     use 'asiryk/auto-hlsearch.nvim'
 
-    -- automatic mgmt of soft/hard wrap
-    use 'andrewferrier/wrapping.nvim'
-
     -- telescope
     use {
         'nvim-telescope/telescope.nvim', tag = '0.1.0',
