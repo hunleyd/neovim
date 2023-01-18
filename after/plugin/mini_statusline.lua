@@ -4,7 +4,7 @@ require('mini.statusline').setup({
             -- stylua: ignore start
             local mode, mode_hl = MiniStatusline.section_mode({ trunc_width = 120 })
             local spell         = vim.wo.spell and (MiniStatusline.is_truncated(120) and 'S' or 'SPELL') or ''
-            local wrap          = require('wrapping').get_current_mode()
+            local wrap          = vim.wo.wrap and (MiniStatusline.is_truncated(120) and 'W' or 'WRAP') or ''
             -- local wrap          = vim.wo.wrap and (MiniStatusline.is_truncated(120) and 'W' or 'WRAP') or ''
             local git           = MiniStatusline.section_git({ trunc_width = 75 })
             -- Default diagnstics icon has some problems displaying in Kitty terminal
@@ -19,7 +19,6 @@ require('mini.statusline').setup({
             -- sections, etc.)
             return MiniStatusline.combine_groups({
                 { hl = mode_hl, strings = { mode } },
-                { hl = mode_hl, strings = { wrap } },
                 --        { hl = 'MiniStatuslineDevinfo', strings = { diagnostics } },
                 '%<', -- Mark general truncate point
                 { hl = mode_hl, strings = { filename } },
