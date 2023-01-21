@@ -13,6 +13,9 @@ return require('packer').startup(function(use)
     -- theme
     use { 'kvrohit/mellow.nvim', as = 'mellow' }
 
+    -- statusline
+    use 'bluz71/nvim-linefly'
+
     -- apply window dressing
     use 'stevearc/dressing.nvim'
 
