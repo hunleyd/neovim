@@ -36,6 +36,8 @@ vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 vim.keymap.set("n", "<leader>o", ":<C-u>call append(line('.'), repeat([''], v:count1))<CR>")
 vim.keymap.set("n", "<leader>O", ":<C-u>call append(line('.')-1, repeat([''], v:count1))<CR>")
 
+vim.keymap.set("n", "\\\\", ":term<CR>")
+
 -- lsp diagnostics
 local opts = { noremap = true, silent = true }
 vim.keymap.set(
