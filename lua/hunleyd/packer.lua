@@ -47,6 +47,9 @@ return require('packer').startup(function(use)
     -- automatic mgmt of hlsearch
     use 'asiryk/auto-hlsearch.nvim'
 
+    -- put diags into virtual lines
+    use 'https://git.sr.ht/~whynothugo/lsp_lines.nvim'
+
     -- telescope
     use {
         'nvim-telescope/telescope.nvim', tag = '0.1.0',
