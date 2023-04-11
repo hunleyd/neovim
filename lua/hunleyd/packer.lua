@@ -22,9 +22,6 @@ return require('packer').startup(function(use)
     -- load mini plugin collection
     use { 'echasnovski/mini.nvim', branch = 'main' }
 
-    -- make 'w', 'e', and 'b' smarter
-    use 'chrisgrieser/nvim-spider'
-
     -- show indent levels
     use 'nathanaelkane/vim-indent-guides'
 
