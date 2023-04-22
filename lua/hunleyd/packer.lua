@@ -19,6 +19,9 @@ return require('packer').startup(function(use)
     -- apply window dressing
     use 'stevearc/dressing.nvim'
 
+    -- fancy notifications
+    use 'rcarriga/nvim-notify'
+
     -- load mini plugin collection
     use { 'echasnovski/mini.nvim', branch = 'main' }
 
