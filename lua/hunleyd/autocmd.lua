@@ -15,9 +15,6 @@ local autocmds = {
     set_formatoptions = {
         { "BufEnter", "*", "setlocal formatoptions-=o" };
     };
-    yankhighlight = {
-        { "TextYankPost", "*", "silent! lua vim.highlight.on_yank()" };
-    };
     ansible_filetype = {
         { "BufNewFile,BufReadPost", "*.yml", "set filetype=yaml.ansible" };
     };
