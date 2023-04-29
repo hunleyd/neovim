@@ -28,9 +28,6 @@ return require('packer').startup(function(use)
     -- show indent levels
     use 'nathanaelkane/vim-indent-guides'
 
-    -- take me to where i was when last editing this file
-    -- use 'farmergreg/vim-lastplace'
-
     -- git-related plugins
     use 'lewis6991/gitsigns.nvim'
     use 'sindrets/diffview.nvim'
@@ -66,7 +63,7 @@ return require('packer').startup(function(use)
     -- LSP (via lsp-zero / mason)
     use {
         'VonHeikemen/lsp-zero.nvim',
-        branch = 'v1.x',
+        branch = 'v2.x',
         requires = {
             -- LSP Support
             { 'neovim/nvim-lspconfig' },
