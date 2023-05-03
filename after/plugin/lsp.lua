@@ -39,6 +39,9 @@ cmp.setup({
     },
     mapping = {
         ["<C-Space>"] = cmp.mapping.complete(),
+        ["<Tab>"] = cmp.mapping(cmp.mapping.select_next_item(), {'i','c'}),
+        ["<S-Tab>"] = cmp.mapping(cmp.mapping.select_prev_item(), {'i','c'}),
+        ["<CR>"] = cmp.mapping.confirm({select = true }),
     }
 })
 
