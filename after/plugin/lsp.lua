@@ -1,10 +1,15 @@
 # from https://www.reddit.com/r/neovim/comments/12wxwxs/lspzero_v2x_is_now_available/jhgskez/
-local lsp = require("lsp-zero").preset({})
+local lsp = require("lsp-zero")
+
+lsp.preset("recommended")
 
 lsp.ensure_installed({
     "tsserver",
     "rust_analyzer",
 })
+
+-- Fix Undefined global 'vim'
+lsp.nvim_workspace()
 
 lsp.on_attach(function(client, bufnr)
     local opts = {buffer = bufnr, remap = false}

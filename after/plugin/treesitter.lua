@@ -1,3 +1,4 @@
+-- https://github.com/ThePrimeagen/init.lua/blob/master/after/plugin/treesitter.lua
 require'nvim-treesitter.configs'.setup {
   -- A list of parser names, or "all"
   ensure_installed = { "bash", "comment", "gitcommit", "gitignore", "vimdoc", "html", "lua", "markdown", "yaml" },
