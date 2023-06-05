@@ -1,7 +1,6 @@
 # from https://www.reddit.com/r/neovim/comments/12wxwxs/lspzero_v2x_is_now_available/jhgskez/
-local lsp = require("lsp-zero")
-
-lsp.preset("recommended")
+local lsp = require("lsp-zero").preset({})
+-- lsp.preset("recommended")
 
 lsp.ensure_installed({
     "tsserver",
