@@ -1,6 +1,6 @@
 -- https://github.com/ThePrimeagen/init.lua/blob/master/lua/theprimeagen/remap.lua
 vim.g.mapleader = " "
-vim.keymap.set("n", "<leader>cd", vim.cmd.Ex) -- is <leader>pv upstream
+-- vim.keymap.set("n", "<leader>cd", vim.cmd.Ex) -- is <leader>pv upstream
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
@@ -36,6 +36,8 @@ vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
 -- my shit
 vim.keymap.set("n", "\\\\", ":term<CR>")
+vim.keymap.set("n", "-", ':lua require("mini.files").open(vim.api.nvim_buf_get_name(0), true)<CR>')
+vim.keymap.set("n", "<leader>cd", ':lua require("mini.files").open(vim.loop.cwd(), true)<CR>')
 
 -- lsp diagnostics
 local opts = { noremap = true, silent = true }
