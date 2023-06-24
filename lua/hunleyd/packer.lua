@@ -11,7 +11,7 @@ return require('packer').startup(function(use)
     use 'mbbill/undotree'
 
     -- theme
-    use { 'kvrohit/mellow.nvim', as = 'mellow' }
+    use { 'dasupradyumna/midnight.nvim', as = 'midnight' }
 
     -- statusline
     use 'bluz71/nvim-linefly'
