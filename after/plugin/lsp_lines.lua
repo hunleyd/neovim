@@ -6,7 +6,7 @@ vim.diagnostic.config({
 })
 
 vim.diagnostic.disable()
-vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
+vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false, scope='cursor'})]]
 
 -- set keymap
 vim.keymap.set(

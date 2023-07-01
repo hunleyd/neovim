@@ -13,6 +13,9 @@ return require('packer').startup(function(use)
     -- theme
     use { 'dasupradyumna/midnight.nvim', as = 'midnight' }
 
+    -- make Jim better at vi
+    use 'm4xshen/hardtime.nvim'
+
     -- statusline
     use 'bluz71/nvim-linefly'
 
