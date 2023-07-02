@@ -26,7 +26,7 @@ return require('packer').startup(function(use)
     use 'rcarriga/nvim-notify'
 
     -- lsp progress ui
-    use 'j-hui/fidget.nvim'
+    use { 'j-hui/fidget.nvim', tag = 'legacy' }
 
     -- load mini plugin collection
     use { 'echasnovski/mini.nvim', branch = 'main' }
@@ -83,7 +83,7 @@ return require('packer').startup(function(use)
             { 'saadparwaiz1/cmp_luasnip' },
             { 'hrsh7th/cmp-nvim-lsp' },
             { 'hrsh7th/cmp-nvim-lua' },
-            { 'tzachar/cmp-tabnine', run = './install.sh' },
+            { 'tzachar/cmp-tabnine',              run = './install.sh' },
 
             -- Snippets
             { 'L3MON4D3/LuaSnip' },
