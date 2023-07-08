@@ -36,7 +36,7 @@ vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
 -- my shit
 vim.keymap.set("n", "\\\\", ":term<CR>")
-vim.keymap.set("n", "-", ':lua require("mini.files").open(vim.api.nvim_buf_get_name(0), true)<CR>')
+-- vim.keymap.set("n", "-", ':lua require("mini.files").open(vim.api.nvim_buf_get_name(0), true)<CR>')
 vim.keymap.set("n", "<leader>cd", ':lua require("mini.files").open(vim.loop.cwd(), true)<CR>')
 
 -- lsp diagnostics
