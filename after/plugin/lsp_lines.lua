@@ -2,7 +2,7 @@ require("lsp_lines").setup()
 
 -- remove the default vtext
 vim.diagnostic.config({
-  virtual_text = false,
+  virtual_text = true,
 })
 
 vim.diagnostic.disable()
