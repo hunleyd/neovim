@@ -46,9 +46,13 @@ return require('packer').startup(function(use)
 
     -- ansible syntax highlighting
     use 'pearofducks/ansible-vim'
+    use 'mfussenegger/nvim-ansible'
 
     -- where in the YAML structure are we
     use 'Einenlum/yaml-revealer'
+
+    -- auto-create toc in md with :TOC
+    use 'richardbizik/nvim-toc'
 
     -- automatic mgmt of hlsearch
     use 'asiryk/auto-hlsearch.nvim'
@@ -58,8 +62,7 @@ return require('packer').startup(function(use)
 
     -- telescope
     use {
-        'nvim-telescope/telescope.nvim', tag = '0.1.0',
-        -- or                            , branch = '0.1.x',
+        'nvim-telescope/telescope.nvim', branch = '0.1.x',
         requires = { { 'nvim-lua/plenary.nvim' } }
     }
 
@@ -77,7 +80,17 @@ return require('packer').startup(function(use)
             { 'williamboman/mason-lspconfig.nvim' },
 
             -- Autocompletion
-            { 'hrsh7th/nvim-cmp' },
+            { 'hrsh7th/nvim-cmp',
+            config = function ()
+              require'cmp'.setup {
+                  snippet = {
+                      expand = function(args)
+                          require'luasnip'.lsp_expand(args.body)
+                      end
+                  },
+              }
+          end
+              },
             { 'hrsh7th/cmp-buffer' },
             { 'hrsh7th/cmp-path' },
             { 'saadparwaiz1/cmp_luasnip' },
