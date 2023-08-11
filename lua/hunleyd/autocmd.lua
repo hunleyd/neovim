@@ -21,6 +21,9 @@ local autocmds = {
     ansible_modeline = {
         { "FileType", "yaml.ansible", "setlocal ts=2 sts=2 sw=2 expandtab" };
     };
+    ansible_keyword = {
+        { "FileType", "yaml.ansible", "setlocal iskeyword-=." };
+    };
     css_filetype = {
         { "BufRead,BufNewFile", "*.{css,scss}", "setf css" };
     };
