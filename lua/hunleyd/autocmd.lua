@@ -46,8 +46,11 @@ local autocmds = {
         { "BufNewFile,BufRead", "*.yml", "set keywordprg=ansible-doc" };
     };
     templates = {
-        { "BufNewFile", "*.*", "silent! execute '0r ~/.config/nvim/skeletons/skeleton.'.expand('<afile>:e')" }
-    }
+        { "BufNewFile", "*.*", "silent! execute '0r ~/.config/nvim/skeletons/skeleton.'.expand('<afile>:e')" };
+    };
+    autocenter = {
+        { "BufEnter,WinEnter,WinNew,VimResized", "*,*.*", "let &scrolloff=winheight(win_getid())/2" };
+    };
 }
 
 nvim_create_augroups(autocmds)
