@@ -11,7 +11,8 @@ return require('packer').startup(function(use)
     use 'mbbill/undotree'
 
     -- theme
-    use { 'dasupradyumna/midnight.nvim', as = 'midnight' }
+    -- use { 'dasupradyumna/midnight.nvim', as = 'midnight' }
+    use { 'ronisbr/nano-theme.nvim', as = 'nano' }
 
     -- make Jim better at vi
     use 'm4xshen/hardtime.nvim'
