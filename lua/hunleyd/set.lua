@@ -33,5 +33,7 @@ vim.opt.colorcolumn = "80"
 vim.opt.encoding = 'utf-8'
 vim.opt.fileencoding = 'utf-8'
 vim.opt.mouse = ''
+vim.opt.spell = true
+vim.opt.spelllang = 'en_us'
 vim.opt.wrap = true
 vim.opt.list = false
