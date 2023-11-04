@@ -5,3 +5,9 @@ Grafana
 Patroni
 pgBackRest
 PgBouncer
+performant
+WAL
+etcd
+failover
+DCS
+TLS
