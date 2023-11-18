@@ -26,8 +26,9 @@ return require('packer').startup(function(use)
     -- fancy notifications
     use 'rcarriga/nvim-notify'
 
+    -- eventually this will replace the line above
     -- lsp progress ui
-    use { 'j-hui/fidget.nvim', tag = 'legacy' }
+    use { 'j-hui/fidget.nvim' }
 
     -- load mini plugin collection
     use { 'echasnovski/mini.nvim', branch = 'main' }

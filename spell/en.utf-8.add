@@ -11,3 +11,5 @@ etcd
 failover
 DCS
 TLS
+pooler
+GPG
