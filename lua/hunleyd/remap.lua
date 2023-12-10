@@ -1,5 +1,6 @@
 -- https://github.com/ThePrimeagen/init.lua/blob/master/lua/theprimeagen/remap.lua
-vim.g.mapleader = " "
+
+-- leader moved to lazy.lua
 -- vim.keymap.set("n", "<leader>cd", vim.cmd.Ex) -- is <leader>pv upstream
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
