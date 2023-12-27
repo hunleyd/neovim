@@ -86,7 +86,7 @@ return require('lazy').setup({
                 ts_update()
             end,
     },
---    { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' },
+--    { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate' },
 
     -- LSP (via lsp-zero / mason)
     {
@@ -118,7 +118,7 @@ return require('lazy').setup({
             { 'tzachar/cmp-tabnine', build = './install.sh' },
 
             -- Snippets
-            { 'L3MON4D3/LuaSnip' , tag = "v2.1.1", run = "make install_jsregexp" },
+            { 'L3MON4D3/LuaSnip' , tag = "v2.1.1", build = "make install_jsregexp" },
             { 'rafamadriz/friendly-snippets' },
         },
     },
