@@ -21,7 +21,8 @@ return require('lazy').setup({
 
     -- theme
     -- { 'dasupradyumna/midnight.nvim', as = 'midnight' }
-    { 'ronisbr/nano-theme.nvim', as = 'nano' },
+    -- { 'ronisbr/nano-theme.nvim', as = 'nano' },
+    { "miikanissi/modus-themes.nvim", priority = 1000, as = 'modus' },
 
     -- make Jim better at vi
     'm4xshen/hardtime.nvim',
