@@ -13,7 +13,7 @@ Clone the repository and install the plugins:
 
 ```sh
 git clone git@github.com:hunleyd/neovim ~/.config/hunleyd/neovim
-NVIM_APPNAME=hunleyd/neovim/lua/hunleyd nvim --headless +"PackerSync" +qa
+NVIM_APPNAME=hunleyd/neovim/lua/hunleyd nvim --headless +"Lazy! sync" +qa
 ```
 
 Open Neovim with this config:
@@ -26,6 +26,7 @@ NVIM_APPNAME=hunleyd/neovim/lua/hunleyd nvim
 
 ### colorscheme
 
++ [miikanissi/modus-themes.nvim](https://dotfyle.com/plugins/miikanissi/modus-themes.nvim)
 + [dasupradyumna/midnight.nvim](https://dotfyle.com/plugins/dasupradyumna/midnight.nvim)
 ### completion
 
@@ -53,10 +54,11 @@ NVIM_APPNAME=hunleyd/neovim/lua/hunleyd nvim
 + [nvim-lua/plenary.nvim](https://dotfyle.com/plugins/nvim-lua/plenary.nvim)
 ### plugin-manager
 
-+ [wbthomason/packer.nvim](https://dotfyle.com/plugins/wbthomason/packer.nvim)
++ [folke/lazy.nvim](https://dotfyle.com/plugins/folke/lazy.nvim)
 ### snippet
 
 + [L3MON4D3/LuaSnip](https://dotfyle.com/plugins/L3MON4D3/LuaSnip)
++ [rafamadriz/friendly-snippets](https://dotfyle.com/plugins/rafamadriz/friendly-snippets)
 ### syntax
 
 + [nvim-treesitter/nvim-treesitter](https://dotfyle.com/plugins/nvim-treesitter/nvim-treesitter)
