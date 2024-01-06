@@ -34,14 +34,14 @@ return require('lazy').setup({
     'stevearc/dressing.nvim',
 
     -- fancy notifications
-    'rcarriga/nvim-notify',
+    -- 'rcarriga/nvim-notify',
 
     -- eventually this will replace the line above
     -- lsp progress ui
-    'j-hui/fidget.nvim',
+    -- 'j-hui/fidget.nvim',
 
     -- load mini plugin collection
-    { 'echasnovski/mini.nvim', branch = 'main' },
+    { 'echasnovski/mini.nvim', version = false },
 
     -- show indent levels
     'nathanaelkane/vim-indent-guides',
