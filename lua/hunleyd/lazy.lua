@@ -20,8 +20,6 @@ return require('lazy').setup({
     'mbbill/undotree',
 
     -- theme
-    -- { 'dasupradyumna/midnight.nvim', as = 'midnight' }
-    -- { 'ronisbr/nano-theme.nvim', as = 'nano' },
     { "miikanissi/modus-themes.nvim", priority = 1000, as = 'modus' },
 
     -- make Jim better at vi
@@ -33,12 +31,8 @@ return require('lazy').setup({
     -- apply window dressing
     'stevearc/dressing.nvim',
 
-    -- fancy notifications
-    -- 'rcarriga/nvim-notify',
-
-    -- eventually this will replace the line above
-    -- lsp progress ui
-    -- 'j-hui/fidget.nvim',
+    -- visual highlight entire line
+    { '0xAdk/full_visual_line.nvim', keys = 'V', opts = {}, },
 
     -- load mini plugin collection
     { 'echasnovski/mini.nvim', version = false },
