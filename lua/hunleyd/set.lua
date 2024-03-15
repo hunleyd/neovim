@@ -37,4 +37,4 @@ vim.opt.spell = true
 vim.opt.spelllang = 'en_us'
 vim.opt.wrap = true
 vim.opt.list = false
-vim.o.statuscolumn = '%s %{v:lnum<line(".")?"-":""}%r'
+-- vim.o.statuscolumn = '%s %{v:lnum<line(".")?"-":""}%r'
