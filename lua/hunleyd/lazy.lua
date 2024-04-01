@@ -16,6 +16,9 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 return require('lazy').setup({
+    -- auto-star whatever plugins we use
+    { 'jsongerber/thanks.nvim', opts = { plugin_manager = "lazy", } },
+
     -- undotree
     'mbbill/undotree',
 
