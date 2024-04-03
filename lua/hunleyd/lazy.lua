@@ -65,10 +65,6 @@ return require('lazy').setup({
     -- show indent levels
     'nathanaelkane/vim-indent-guides',
 
-    -- git-related plugins
-    'lewis6991/gitsigns.nvim',
-    'sindrets/diffview.nvim',
-
     -- additional spellcheck lists, updated on every pull
     { 'psliwka/vim-dirtytalk', build = ':DirtytalkUpdate' },
 
