@@ -24,6 +24,9 @@ NVIM_APPNAME=hunleyd/neovim/lua/hunleyd nvim
 
 ## Plugins
 
+### bars-and-lines
+
++ [luukvbaal/statuscol.nvim](https://dotfyle.com/plugins/luukvbaal/statuscol.nvim)
 ### color
 
 + [0xAdk/full_visual_line.nvim](https://dotfyle.com/plugins/0xAdk/full_visual_line.nvim)
@@ -36,10 +39,6 @@ NVIM_APPNAME=hunleyd/neovim/lua/hunleyd nvim
 ### fuzzy-finder
 
 + [nvim-telescope/telescope.nvim](https://dotfyle.com/plugins/nvim-telescope/telescope.nvim)
-### git
-
-+ [lewis6991/gitsigns.nvim](https://dotfyle.com/plugins/lewis6991/gitsigns.nvim)
-+ [sindrets/diffview.nvim](https://dotfyle.com/plugins/sindrets/diffview.nvim)
 ### lsp
 
 + [VonHeikemen/lsp-zero.nvim](https://dotfyle.com/plugins/VonHeikemen/lsp-zero.nvim)
@@ -66,6 +65,7 @@ NVIM_APPNAME=hunleyd/neovim/lua/hunleyd nvim
 ### utility
 
 + [echasnovski/mini.nvim](https://dotfyle.com/plugins/echasnovski/mini.nvim)
++ [jsongerber/thanks.nvim](https://dotfyle.com/plugins/jsongerber/thanks.nvim)
 + [stevearc/dressing.nvim](https://dotfyle.com/plugins/stevearc/dressing.nvim)
 ### workflow
 
