@@ -17,13 +17,14 @@ vim.g.maplocalleader = " "
 
 return require('lazy').setup({
     -- auto-star whatever plugins we use
-    { 'jsongerber/thanks.nvim', opts = { plugin_manager = "lazy", } },
+    { 'jsongerber/thanks.nvim', config = true, },
 
     -- undotree
     'mbbill/undotree',
 
     -- theme
-    { "miikanissi/modus-themes.nvim", priority = 1000, as = 'modus' },
+    -- { "miikanissi/modus-themes.nvim", priority = 1000, as = 'modus' },
+    { "scottmckendry/cyberdream.nvim", priority = 1000, as = 'cyberdream' },
 
     -- make Jim better at vi
     'm4xshen/hardtime.nvim',

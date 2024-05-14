@@ -1,7 +1,5 @@
 function ColorMyPencils(color)
-	color = color or "modus"
-	-- color = color or "nano-theme"
-	-- color = color or "midnight"
+	color = color or "cyberdream"
 	vim.o.background = "dark"
 	vim.cmd.colorscheme(color)
 end
