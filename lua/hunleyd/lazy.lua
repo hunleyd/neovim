@@ -63,9 +63,6 @@ return require('lazy').setup({
     -- load mini plugin collection
     { 'echasnovski/mini.nvim', version = false },
 
-    -- show indent levels
-    'nathanaelkane/vim-indent-guides',
-
     -- additional spellcheck lists, updated on every pull
     { 'psliwka/vim-dirtytalk', build = ':DirtytalkUpdate' },
 
