@@ -32,6 +32,7 @@ NVIM_APPNAME=hunleyd/neovim/lua/hunleyd nvim
 + [0xAdk/full_visual_line.nvim](https://dotfyle.com/plugins/0xAdk/full_visual_line.nvim)
 ### colorscheme
 
++ [scottmckendry/cyberdream.nvim](https://dotfyle.com/plugins/scottmckendry/cyberdream.nvim)
 + [miikanissi/modus-themes.nvim](https://dotfyle.com/plugins/miikanissi/modus-themes.nvim)
 ### completion
 
