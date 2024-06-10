@@ -57,6 +57,9 @@ return require('lazy').setup({
     -- apply window dressing
     'stevearc/dressing.nvim',
 
+    -- make misspellings diag errors
+    { "ravibrock/spellwarn.nvim", event = "VeryLazy", config = true, },
+
     -- visual highlight entire line
     { '0xAdk/full_visual_line.nvim', keys = 'V', opts = {}, },
 
@@ -119,6 +122,13 @@ return require('lazy').setup({
                       expand = function(args)
                           require'luasnip'.lsp_expand(args.body)
                       end
+                  },
+                    sources = {
+                        { name = 'nvim_lsp' },
+                        { name = 'vsnip' },
+                        { name = 'path' },
+                        { name = 'treesitter' },
+                        { name = 'spell' },
                   },
               }
             end
