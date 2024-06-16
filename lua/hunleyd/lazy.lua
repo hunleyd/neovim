@@ -28,6 +28,7 @@ return require('lazy').setup({
 
     -- make Jim better at vi
     'm4xshen/hardtime.nvim',
+    { 'tris203/precognition.nvim', opts = {} },
 
     -- statusline
     'bluz71/nvim-linefly',
