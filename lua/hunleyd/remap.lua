@@ -38,6 +38,8 @@ vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 -- my shit
 vim.keymap.set("n", "\\\\", ":term<CR>")
 vim.keymap.set("n", "cd", ":lua MiniFiles.open()<CR>")
+vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
+
 
 -- lsp diagnostics
 local opts = { noremap = true, silent = true }
