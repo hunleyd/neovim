@@ -271,6 +271,9 @@ return require('lazy').setup({
         require('auto-hlsearch').setup()
       end },
 
+    -- automatic  restoration of view when switching buffers
+    { 'BranimirE/fix-auto-scroll.nvim', config = true, event = 'VeryLazy' };
+
     -- put diags into top-right corner
     { 'dgagn/diagflow.nvim',
       config = function()
