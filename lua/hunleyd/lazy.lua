@@ -41,6 +41,43 @@ return require('lazy').setup({
             require('hardtime').setup()
         end },
     { 'tris203/precognition.nvim', opts = {} },
+    -- make it easier to see wtf Jim did :)
+    { 'NStefan002/screenkey.nvim',
+        lazy = false,
+        version = '*',
+        config = function()
+            require('screenkey').setup({
+                keys = {
+                    ["<TAB>"] = "⇥",
+                    ["<CR>"] = "↵",
+                    ["<ESC>"] = "Esc",
+                    ["<SPACE>"] = "␣",
+                    ["<BS>"] = "⇤",
+                    ["<DEL>"] = "Del",
+                    ["<HOME>"] = "Home",
+                    ["<END>"] = "End",
+                    ["<PAGEUP>"] = "PgUp",
+                    ["<PAGEDOWN>"] = "PgDn",
+                    ["<INSERT>"] = "Ins",
+                    ["<F1>"] = "F1",
+                    ["<F2>"] = "F2",
+                    ["<F3>"] = "F3",
+                    ["<F4>"] = "F4",
+                    ["<F5>"] = "F5",
+                    ["<F6>"] = "F6",
+                    ["<F7>"] = "F7",
+                    ["<F8>"] = "F8",
+                    ["<F9>"] = "F9",
+                    ["<F10>"] = "F10",
+                    ["<F11>"] = "F11",
+                    ["<F12>"] = "F12",
+                    ["CTRL"] = "Ctrl",
+                    ["ALT"] = "Alt",
+                    ["SUPER"] = "Cmd",
+                    ["<leader>"] = "<leader>",
+                },
+            })
+        end},
 
     -- statusline
     { 'bluz71/nvim-linefly' },
