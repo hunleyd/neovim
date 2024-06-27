@@ -51,9 +51,6 @@ local autocmds = {
     autocenter = {
         { "BufEnter,WinEnter,WinNew,VimResized", "*,*.*", "let &scrolloff=winheight(win_getid())/2" };
     };
-    screenkey = {
-        { "BufEnter", "*", "Screenkey toggle" };
-    };
 }
 
 nvim_create_augroups(autocmds)
