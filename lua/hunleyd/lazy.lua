@@ -232,14 +232,11 @@ return require('lazy').setup({
     -- automatic  restoration of view when switching buffers
     { 'BranimirE/fix-auto-scroll.nvim', config = true, event = 'VeryLazy' };
 
+    -- prettier diagnostics
+    { 'dgagn/diagflow.nvim', event = 'LspAttach', opts = {} },
+
     -- make misspellings diag errors
     { 'ravibrock/spellwarn.nvim', event = 'VeryLazy', config = true, },
-
-    -- inline diagnostics
-    { 'rachartier/tiny-inline-diagnostic.nvim', event = 'VeryLazy',
-        config = function()
-            require('tiny-inline-diagnostic').setup()
-        end },
 
     -- telescope
     -- see after/plugin/telescope.lua for config
