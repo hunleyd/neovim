@@ -159,7 +159,7 @@ return require('lazy').setup({
                     hex_color = hipatterns.gen_highlighter.hex_color(),
                 },
             })
-            require('mini.git').setup()
+            require('mini.git').setup({})
             require('mini.indentscope').setup({})
             require('mini.jump').setup({})
             require('mini.notify').setup({})
@@ -178,7 +178,7 @@ return require('lazy').setup({
                 },
             })
             require('mini.splitjoin').setup({})
-            require('mini.statusline').setup()
+            require('mini.statusline').setup({})
             require('mini.surround').setup({})
             require('mini.tabline').setup({})
             vim.api.nvim_set_hl(0, 'MiniTablineModifiedHidden', { link = 'DiffChange' })
@@ -192,7 +192,7 @@ return require('lazy').setup({
               end),
               desc = 'Update tabline based on the number of listed buffers',
             })
-            require('mini.trailspace').setup()
+            require('mini.trailspace').setup({})
         end },
      { "echasnovski/mini.icons", opts = {}, lazy = true, specs = { { "nvim-tree/nvim-web-devicons", enabled = false, optional = true }, }, init = function() package.preload["nvim-web-devicons"] = function() require("mini.icons").mock_nvim_web_devicons() return package.loaded["nvim-web-devicons"] end end, },
 
@@ -239,8 +239,7 @@ return require('lazy').setup({
 
     -- tree sitter
     -- see after/plugin/treesitter.lua for config
-    {
-            'nvim-treesitter/nvim-treesitter',
+    { 'nvim-treesitter/nvim-treesitter',
             build = function()
                 local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
                 ts_update()
@@ -248,44 +247,15 @@ return require('lazy').setup({
     },
 
     -- LSP (via lsp-zero / mason)
-    -- see after/plugin/lsp.lua for the config. i'm too lay to figure out how to put it here
-    {
-        'VonHeikemen/lsp-zero.nvim',
-        branch = 'v2.x',
-        dependencies = {
-            -- LSP Support
-            { 'neovim/nvim-lspconfig' },
-            { 'williamboman/mason.nvim' },
-            { 'williamboman/mason-lspconfig.nvim' },
-
-            -- Autocompletion
-            { 'hrsh7th/nvim-cmp',
-            config = function ()
-              require'cmp'.setup {
-                  snippet = {
-                      expand = function(args)
-                          require'luasnip'.lsp_expand(args.body)
-                      end
-                  },
-                    sources = {
-                        { name = 'nvim_lsp' },
-                        { name = 'vsnip' },
-                        { name = 'path' },
-                        { name = 'treesitter' },
-                        { name = 'spell' },
-                  },
-              }
-            end },
-            { 'hrsh7th/cmp-buffer' },
-            { 'hrsh7th/cmp-path' },
-            { 'saadparwaiz1/cmp_luasnip' },
-            { 'hrsh7th/cmp-nvim-lsp' },
-            { 'hrsh7th/cmp-nvim-lua' },
-            { 'tzachar/cmp-tabnine', build = './install.sh' },
-
-            -- Snippets
-            { 'L3MON4D3/LuaSnip' , tag = 'v2.3.0', build = 'make install_jsregexp' },
-            { 'rafamadriz/friendly-snippets' },
-        },
-    },
+    {'VonHeikemen/lsp-zero.nvim', branch = 'v4.x'},
+    {'neovim/nvim-lspconfig'},
+    {'williamboman/mason.nvim'},
+    {'williamboman/mason-lspconfig.nvim'},
+    {'hrsh7th/nvim-cmp'},
+    {'hrsh7th/cmp-buffer'},
+    {'hrsh7th/cmp-path'},
+    {'hrsh7th/cmp-nvim-lsp'},
+    {'tzachar/cmp-tabnine', build = './install.sh'},
+    {'L3MON4D3/LuaSnip'},
+    {'rafamadriz/friendly-snippets'},
 })

@@ -1,51 +1,63 @@
-# from https://www.reddit.com/r/neovim/comments/12wxwxs/lspzero_v2x_is_now_available/jhgskez/
-local lsp = require("lsp-zero").preset({})
--- lsp.preset("recommended")
+local lsp_zero = require('lsp-zero')
 
-lsp.ensure_installed({
-    "tsserver",
-    "rust_analyzer",
+local lsp_attach = function(client, bufnr)
+  -- see :help lsp-zero-keybindings
+  -- to learn the available actions
+  lsp_zero.default_keymaps({buffer = bufnr})
+end
+
+lsp_zero.extend_lspconfig({
+  capabilities = require('cmp_nvim_lsp').default_capabilities(),
+  lsp_attach = lsp_attach,
+  float_border = 'rounded',
+  sign_text = true,
 })
 
--- Fix Undefined global 'vim'
-lsp.nvim_workspace()
+require('mason').setup({})
+require('mason-lspconfig').setup({
+  ensure_installed = {},
+  handlers = {
+    -- this first function is the "default handler"
+    -- it applies to every language server without a "custom handler"
+    function(server_name)
+      require('lspconfig')[server_name].setup({})
+    end,
 
-lsp.on_attach(function(client, bufnr)
-    local opts = {buffer = bufnr, remap = false}
+    -- this is the "custom handler" for `lua_ls`
+    lua_ls = function()
+      require('lspconfig').lua_ls.setup({
+        on_init = function(client)
+          lsp_zero.nvim_lua_settings(client, {})
+        end,
+      })
+    end,
+  }
+})
 
-    vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
---    vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
-    vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
-    vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, opts)
-    vim.keymap.set("n", "[d", function() vim.diagnostic.goto_prev() end, opts)
-    vim.keymap.set("n", "]d", function() vim.diagnostic.goto_next() end, opts)
-    vim.keymap.set("n", "<leader>vca", function() vim.lsp.buf.code_action() end, opts)
-    vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end, opts)
-    vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
-    vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
-end)
-
--- Fix Undefined global 'vim'
-require("lspconfig").lua_ls.setup(lsp.nvim_lua_ls())
-
-lsp.setup()
-
-local cmp = require("cmp")
-require("luasnip.loaders.from_vscode").lazy_load()
+local cmp = require('cmp')
 
 cmp.setup({
-    sources = {
-        {name = "path"},
-        {name = "nvim_lsp"},
-        {name = "nvim_lua"},
-        {name = "buffer", keyword_length = 3},
-        {name = "luasnip", keyword_length = 2},
-    },
-    mapping = {
-        ["<C-Space>"] = cmp.mapping.complete(),
-        ["<Tab>"] = cmp.mapping(cmp.mapping.select_next_item(), {'i','c'}),
-        ["<S-Tab>"] = cmp.mapping(cmp.mapping.select_prev_item(), {'i','c'}),
-        ["<CR>"] = cmp.mapping.confirm({select = true }),
-    }
+  sources = {
+    {name = "path"},
+    {name = 'nvim_lsp'},
+    {name = 'nvim_lua'},
+    {name = 'buffer', keyword_length = 3},
+    {name = 'luasnip', keyword_length = 2},
+  },
+  snippet = {
+    expand = function(args)
+      require('luasnip').lsp_expand(args.body)
+    end,
+  },
+  formatting = lsp_zero.cmp_format(),
+  mapping = cmp.mapping.preset.insert({
+    -- scroll up and down the documentation window
+    ['<C-u>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-d>'] = cmp.mapping.scroll_docs(4),
+    -- use tab/shift tabe for next/prev and enter for confirm
+    ['<C-Space>'] = cmp.mapping.complete(),
+    ['<Tab>'] = cmp.mapping(cmp.mapping.select_next_item(), {'i', 'c'}),
+    ['<S-Tab>'] = cmp.mapping(cmp.mapping.select_prev_item(), {'i', 'c'}),
+    ['<CR>'] = cmp.mapping.confirm({select = true}),
+  }),
 })
-
