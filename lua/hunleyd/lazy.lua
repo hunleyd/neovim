@@ -41,9 +41,6 @@ return require('lazy').setup({
             require('hardtime').setup()
         end },
 
-    -- statusline
-    { 'bluz71/nvim-linefly' },
-
     -- statuscol
     { 'luukvbaal/statuscol.nvim', config = function()
       require('statuscol').setup({
@@ -135,12 +132,7 @@ return require('lazy').setup({
                 },
             })
             require('mini.comment').setup()
-            require('mini.diff').setup({
-                view = {
-                    style = 'sign',
-                    signs = { add ='|', change = '|', delete = '|' },
-                }
-            })
+            require('mini.diff').setup({})
             require('mini.files').setup({
                 mappings = {
                     close       = 'q',
@@ -167,6 +159,7 @@ return require('lazy').setup({
                     hex_color = hipatterns.gen_highlighter.hex_color(),
                 },
             })
+            require('mini.git').setup()
             require('mini.indentscope').setup({})
             require('mini.jump').setup({})
             require('mini.notify').setup({})
@@ -185,11 +178,9 @@ return require('lazy').setup({
                 },
             })
             require('mini.splitjoin').setup({})
+            require('mini.statusline').setup()
             require('mini.surround').setup({})
-            require('mini.tabline').setup({
-                show_icons = false,
-                set_vim_settings = true,
-            })
+            require('mini.tabline').setup({})
             vim.api.nvim_set_hl(0, 'MiniTablineModifiedHidden', { link = 'DiffChange' })
             vim.api.nvim_create_autocmd('BufEnter', {
               callback = vim.schedule_wrap(function()
@@ -203,6 +194,7 @@ return require('lazy').setup({
             })
             require('mini.trailspace').setup()
         end },
+     { "echasnovski/mini.icons", opts = {}, lazy = true, specs = { { "nvim-tree/nvim-web-devicons", enabled = false, optional = true }, }, init = function() package.preload["nvim-web-devicons"] = function() require("mini.icons").mock_nvim_web_devicons() return package.loaded["nvim-web-devicons"] end end, },
 
     -- additional spellcheck lists, updated on every pull
     { 'psliwka/vim-dirtytalk', build = ':DirtytalkUpdate' },
