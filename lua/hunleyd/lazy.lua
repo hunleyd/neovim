@@ -50,6 +50,14 @@ return require('lazy').setup({
 
     -- apply window dressing
     { 'stevearc/dressing.nvim' },
+    { 'MunifTanjim/nui.nvim' },
+
+    -- move the CMD input to center screen
+    { 'VonHeikemen/fine-cmdline.nvim', config = function()
+        require('fine-cmdline').setup({
+        })
+        end,
+    },
 
     -- visual highlight entire line
     { '0xAdk/full_visual_line.nvim',
