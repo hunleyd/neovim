@@ -40,6 +40,10 @@ vim.keymap.set("n", "\\\\", ":term<CR>")
 vim.keymap.set("n", "cd", ":lua MiniFiles.open()<CR>")
 vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
 vim.keymap.set("n", ":", "<cmd>FineCmdline<CR>")
+vim.keymap.set("n", "/", ":SearchBoxIncSearch<CR>")
+vim.keymap.set("x", "/", ":SearchBoxIncSearch visual_mode=true<CR>")
+vim.keymap.set("n", "?", ":SearchBoxIncSearch reverse=true<CR>")
+vim.keymap.set("x", "?", ":SearchBoxIncSearch reverse=true visual_mode=true<CR>")
 
 
 -- lsp diagnostics

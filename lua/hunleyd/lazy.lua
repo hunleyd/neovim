@@ -59,6 +59,13 @@ return require('lazy').setup({
         end,
     },
 
+    -- use a search input box
+    { 'VonHeikemen/searchbox.nvim', config = function()
+        require('searchbox').setup({
+        })
+        end,
+    },
+
     -- visual highlight entire line
     { '0xAdk/full_visual_line.nvim',
         keys = 'V',
