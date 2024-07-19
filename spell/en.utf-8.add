@@ -43,3 +43,5 @@ truthy
 bugfixes
 endif
 lstrip_blocks
+symlink
+reprepro
