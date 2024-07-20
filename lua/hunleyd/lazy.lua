@@ -49,11 +49,13 @@ return require('lazy').setup({
     },
 
     -- apply window dressing
-    { 'stevearc/dressing.nvim' },
-    { 'MunifTanjim/nui.nvim' },
+    { 'stevearc/dressing.nvim',
+        dependencies = { 'MunifTanjim/nui.nvim' },
+    },
 
     -- move the CMD input to center screen
     { 'VonHeikemen/fine-cmdline.nvim', config = function()
+        dependencies = { 'MunifTanjim/nui.nvim' },
         require('fine-cmdline').setup({
             cmdline = {
                 prompt = ' What is thy bidding? '
@@ -260,28 +262,31 @@ return require('lazy').setup({
     -- see after/plugin/telescope.lua for config
     { 'nvim-telescope/telescope.nvim',
         branch = '0.1.x',
-        dependencies = { { 'nvim-lua/plenary.nvim' } },
+        dependencies = { 'nvim-lua/plenary.nvim' },
     },
 
     -- tree sitter
     -- see after/plugin/treesitter.lua for config
     { 'nvim-treesitter/nvim-treesitter',
-            build = function()
-                local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
-                ts_update()
-            end,
+        build = function()
+            local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
+            ts_update()
+        end,
+        dependencies = {
+            {'VonHeikemen/lsp-zero.nvim', branch = 'v4.x'},
+            {'neovim/nvim-lspconfig'},
+            {'williamboman/mason.nvim'},
+            {'williamboman/mason-lspconfig.nvim'},
+            {'hrsh7th/nvim-cmp'},
+            {'hrsh7th/cmp-buffer'},
+            {'hrsh7th/cmp-cmdline'},
+            {'hrsh7th/cmp-path'},
+            {'hrsh7th/cmp-nvim-lsp'},
+            {'tzachar/cmp-tabnine', build = './install.sh'},
+            {'L3MON4D3/LuaSnip',
+                dependencies = {'rafamadriz/friendly-snippets'},
+            },
+            {'saadparwaiz1/cmp_luasnip'},
+        },
     },
-
-    -- LSP (via lsp-zero / mason)
-    {'VonHeikemen/lsp-zero.nvim', branch = 'v4.x'},
-    {'neovim/nvim-lspconfig'},
-    {'williamboman/mason.nvim'},
-    {'williamboman/mason-lspconfig.nvim'},
-    {'hrsh7th/nvim-cmp'},
-    {'hrsh7th/cmp-buffer'},
-    {'hrsh7th/cmp-path'},
-    {'hrsh7th/cmp-nvim-lsp'},
-    {'tzachar/cmp-tabnine', build = './install.sh'},
-    {'L3MON4D3/LuaSnip'},
-    {'rafamadriz/friendly-snippets'},
 })
