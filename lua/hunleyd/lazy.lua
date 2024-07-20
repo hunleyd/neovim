@@ -55,6 +55,9 @@ return require('lazy').setup({
     -- move the CMD input to center screen
     { 'VonHeikemen/fine-cmdline.nvim', config = function()
         require('fine-cmdline').setup({
+            cmdline = {
+                prompt = ' What is thy bidding? '
+            }
         })
         end,
     },
