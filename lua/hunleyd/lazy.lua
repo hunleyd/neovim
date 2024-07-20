@@ -220,6 +220,14 @@ return require('lazy').setup({
     -- language packs
     { 'sheerun/vim-polyglot' },
 
+    -- markdown rendering
+    { 'MeanderingProgrammer/markdown.nvim',
+        dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.nvim' },
+        config = function()
+            require('render-markdown').setup({})
+        end,
+    },
+
     -- ansible syntax highlighting
     { 'pearofducks/ansible-vim' },
     { 'mfussenegger/nvim-ansible' },
