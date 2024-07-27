@@ -45,3 +45,6 @@ endif
 lstrip_blocks
 symlink
 reprepro
+tc
+pkgmgr
+RedHat
