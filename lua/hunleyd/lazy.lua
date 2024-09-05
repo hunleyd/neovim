@@ -33,7 +33,7 @@ return require('lazy').setup({
     { 'mbbill/undotree' },
 
     -- theme
-    { 'scottmckendry/cyberdream.nvim', priority = 1000, as = 'cyberdream' },
+    { '0xstepit/flow.nvim', lazy=false, priority = 1000, as = 'flow', opts = {} },
 
     -- make Jim better at vi
     { 'm4xshen/hardtime.nvim',
@@ -71,13 +71,13 @@ return require('lazy').setup({
         end,
     },
 
-    -- visual highlight entire line
-    { '0xAdk/full_visual_line.nvim',
-        keys = 'V',
-        opts = {},
+    -- use color for the different modes
+    { 'mvllow/modes.nvim',
+        tag = 'v0.2.0',
         config = function()
-            require('full_visual_line').setup()
-        end },
+            require('modes').setup()
+        end
+    },
 
     -- load mini plugin collection
     { 'echasnovski/mini.nvim',
