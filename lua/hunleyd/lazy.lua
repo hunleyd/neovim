@@ -249,6 +249,9 @@ return require('lazy').setup({
         require('auto-hlsearch').setup()
       end },
 
+    -- automatic handling of relativenumber
+    { 'sitiom/nvim-numbertoggle' },
+
     -- automatic  restoration of view when switching buffers
     { 'BranimirE/fix-auto-scroll.nvim', config = true, event = 'VeryLazy' };
 
