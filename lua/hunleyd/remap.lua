@@ -44,6 +44,7 @@ vim.keymap.set("n", "/", ":SearchBoxIncSearch<CR>")
 vim.keymap.set("x", "/", ":SearchBoxIncSearch visual_mode=true<CR>")
 vim.keymap.set("n", "?", ":SearchBoxIncSearch reverse=true<CR>")
 vim.keymap.set("x", "?", ":SearchBoxIncSearch reverse=true visual_mode=true<CR>")
+vim.keymap.set("n", "<leader>y", "<cmd>YankBank<CR>", { noremap = true })
 
 
 -- lsp diagnostics

@@ -249,6 +249,16 @@ return require('lazy').setup({
         require('auto-hlsearch').setup()
       end },
 
+    -- use a yank buffer
+    { 'ptdewey/yankbank-nvim',
+        dependencies = 'kkharji/sqlite.lua',
+        config = function()
+            require('yankbank').setup({
+                persist_type = "sqlite",
+            })
+        end,
+    },
+
     -- automatic handling of relativenumber
     { 'sitiom/nvim-numbertoggle' },
 
