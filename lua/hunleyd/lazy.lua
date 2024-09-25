@@ -41,6 +41,22 @@ return require('lazy').setup({
             require('hardtime').setup()
         end },
 
+    -- make t/T/f/F repeatable with ; and '
+    { 'mawkler/demicolon.nvim',
+        keys = { ';', ',', 't', 'f', 'T', 'F', ']', '[', ']d', '[d' },
+        dependencies = {
+            'nvim-treesitter/nvim-treesitter',
+            'nvim-treesitter/nvim-treesitter-textobjects',
+        },
+        opts = {
+            integrations = {
+                gitsigns = {
+                    enabled = false,
+                },
+            },
+        },
+    },
+
     -- statuscol
     { 'luukvbaal/statuscol.nvim', config = function()
       require('statuscol').setup({
