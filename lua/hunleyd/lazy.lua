@@ -57,6 +57,14 @@ return require('lazy').setup({
         },
     },
 
+    -- additional text objects
+    { 'chrisgrieser/nvim-various-textobjs',
+        event = 'UIEnter',
+        opts = {
+            useDefaultKeymaps = true
+        },
+    },
+
     -- statuscol
     { 'luukvbaal/statuscol.nvim', config = function()
       require('statuscol').setup({
