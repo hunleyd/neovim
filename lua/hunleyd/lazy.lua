@@ -283,6 +283,12 @@ return require('lazy').setup({
         end,
     },
 
+    -- scrollbar since i can't get mini.map scrollbar to work
+    { 'ojroques/nvim-scrollbar',
+        config = function()
+            require('scrollbar').setup()
+        end },
+
     -- automatic handling of relativenumber
     { 'sitiom/nvim-numbertoggle' },
 
