@@ -60,3 +60,16 @@ lineinfile
 Patroni's
 dictsort
 endfor
+natively
+repo
+uncomment
+checksum
+worktrees
+worktree
+VirtualBox
+Vagrantfile
+libvirt
+Changelog
+Geekbot
+bugfix
+mentorship
