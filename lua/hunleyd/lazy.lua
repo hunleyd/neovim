@@ -299,7 +299,7 @@ return require('lazy').setup({
     { 'sitiom/nvim-numbertoggle' },
 
     -- automatic  restoration of view when switching buffers
-    { 'BranimirE/fix-auto-scroll.nvim', config = true, event = 'VeryLazy' };
+    { 'BranimirE/fix-auto-scroll.nvim', config = true, event = 'VeryLazy' },
 
     -- prettier diagnostics
     { 'dgagn/diagflow.nvim', event = 'LspAttach', opts = {} },
