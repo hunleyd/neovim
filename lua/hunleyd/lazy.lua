@@ -33,7 +33,13 @@ return require('lazy').setup({
     { 'mbbill/undotree' },
 
     -- theme
-    { '0xstepit/flow.nvim', lazy=false, priority = 1000, as = 'flow', opts = {} },
+    { 'folke/tokyonight.nvim', lazy=false, priority = 1000, as = 'tokyonight', opts = {},
+        config = function()
+            require('tokyonight').setup({
+                style = 'moon',
+                transparent = true,
+            })
+        end },
 
     -- make Jim better at vi
     { 'm4xshen/hardtime.nvim',
