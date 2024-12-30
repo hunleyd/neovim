@@ -4,7 +4,6 @@ require("hunleyd.lazy")
 require("hunleyd.remap")
 require("hunleyd.set")
 require("hunleyd.autocmd")
-require("hunleyd.colors")
 
 local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
