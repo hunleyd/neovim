@@ -39,16 +39,25 @@ NVIM_APPNAME=hunleyd/neovim/lua/hunleyd nvim
 ### diagnostics
 
 + [ravibrock/spellwarn.nvim](https://dotfyle.com/plugins/ravibrock/spellwarn.nvim)
+### editing-support
+
++ [chrisgrieser/nvim-various-textobjs](https://dotfyle.com/plugins/chrisgrieser/nvim-various-textobjs)
++ [ptdewey/yankbank-nvim](https://dotfyle.com/plugins/ptdewey/yankbank-nvim)
 ### fuzzy-finder
 
 + [nvim-telescope/telescope.nvim](https://dotfyle.com/plugins/nvim-telescope/telescope.nvim)
 ### icon
 
 + [nvim-tree/nvim-web-devicons](https://dotfyle.com/plugins/nvim-tree/nvim-web-devicons)
++ [echasnovski/mini.icons](https://dotfyle.com/plugins/echasnovski/mini.icons)
+### keybinding
+
++ [mawkler/demicolon.nvim](https://dotfyle.com/plugins/mawkler/demicolon.nvim)
 ### lsp
 
-+ [VonHeikemen/lsp-zero.nvim](https://dotfyle.com/plugins/VonHeikemen/lsp-zero.nvim)
 + [neovim/nvim-lspconfig](https://dotfyle.com/plugins/neovim/nvim-lspconfig)
++ [rachartier/tiny-inline-diagnostic.nvim](https://dotfyle.com/plugins/rachartier/tiny-inline-diagnostic.nvim)
++ [VonHeikemen/lsp-zero.nvim](https://dotfyle.com/plugins/VonHeikemen/lsp-zero.nvim)
 ### lsp-installer
 
 + [williamboman/mason.nvim](https://dotfyle.com/plugins/williamboman/mason.nvim)
@@ -58,6 +67,7 @@ NVIM_APPNAME=hunleyd/neovim/lua/hunleyd nvim
 + [richardbizik/nvim-toc](https://dotfyle.com/plugins/richardbizik/nvim-toc)
 ### nvim-dev
 
++ [kkharji/sqlite.lua](https://dotfyle.com/plugins/kkharji/sqlite.lua)
 + [nvim-lua/plenary.nvim](https://dotfyle.com/plugins/nvim-lua/plenary.nvim)
 + [MunifTanjim/nui.nvim](https://dotfyle.com/plugins/MunifTanjim/nui.nvim)
 ### plugin-manager
@@ -69,11 +79,12 @@ NVIM_APPNAME=hunleyd/neovim/lua/hunleyd nvim
 + [L3MON4D3/LuaSnip](https://dotfyle.com/plugins/L3MON4D3/LuaSnip)
 ### syntax
 
++ [nvim-treesitter/nvim-treesitter-textobjects](https://dotfyle.com/plugins/nvim-treesitter/nvim-treesitter-textobjects)
 + [nvim-treesitter/nvim-treesitter](https://dotfyle.com/plugins/nvim-treesitter/nvim-treesitter)
 ### utility
 
-+ [BranimirE/fix-auto-scroll.nvim](https://dotfyle.com/plugins/BranimirE/fix-auto-scroll.nvim)
 + [echasnovski/mini.nvim](https://dotfyle.com/plugins/echasnovski/mini.nvim)
++ [BranimirE/fix-auto-scroll.nvim](https://dotfyle.com/plugins/BranimirE/fix-auto-scroll.nvim)
 + [jsongerber/thanks.nvim](https://dotfyle.com/plugins/jsongerber/thanks.nvim)
 + [sitiom/nvim-numbertoggle](https://dotfyle.com/plugins/sitiom/nvim-numbertoggle)
 + [stevearc/dressing.nvim](https://dotfyle.com/plugins/stevearc/dressing.nvim)
