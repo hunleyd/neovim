@@ -95,25 +95,30 @@ return require('lazy').setup({
       end,
     },
 
-    -- apply window dressing
-    { 'stevearc/dressing.nvim',
-        dependencies = { 'MunifTanjim/nui.nvim' },
-    },
-
-    -- move the CMD input to center screen
-    { 'VonHeikemen/fine-cmdline.nvim', config = function()
-        dependencies = { 'MunifTanjim/nui.nvim' },
-        require('fine-cmdline').setup({
-            cmdline = {
-                prompt = ' What is thy bidding? '
-            }
-        })
-        end,
-    },
-
-    -- use a search input box
-    { 'VonHeikemen/searchbox.nvim', config = function()
-        require('searchbox').setup({
+    -- noice for msgs/cmdline/popup menu dressing
+    { 'folke/noice.nvim',
+        event = 'VeryLazy',
+        opts = {},
+        dependencies = {
+            'MunifTanjim/nui.nvim',
+            'rcarriga/nvim-notify',
+        },
+        config = function()
+        require('noice').setup({
+                lsp = {
+                    override = {
+                        ['vim.lsp.util.convert_input_to_markdown_lines'] = true,
+                        ['vim.lsp.util.stylize_markdown'] = true,
+--                        ['cmp.entry.get_documentation'] = true,
+                    },
+                },
+                presets = {
+                    bottom_search = true,
+                    command_palette = true,
+                    long_message_to_split = true,
+                    inc_rename = false,
+                    lsp_doc_border = false,
+                },
         })
         end,
     },
@@ -229,13 +234,6 @@ return require('lazy').setup({
             require('mini.git').setup({})
             require('mini.indentscope').setup({})
             require('mini.jump').setup({})
-            require('mini.notify').setup({})
-            local mini_notify = MiniNotify.make_notify()
-            vim.notify = function(msg, level, opts)
-                opts = opts or {}
-                if opts.title ~= nil then msg = string.format('[%s]: %s', opts.title, msg) end
-                mini_notify(msg, level)
-            end
             require('mini.pairs').setup({
                 mappings = {
                     [' '] = { action = 'open', pair = '  ', neigh_pattern = '[%(%[{][%)%]}]' },
@@ -283,12 +281,6 @@ return require('lazy').setup({
 
     -- where in the YAML structure are we
     { 'Einenlum/yaml-revealer' },
-
-    -- auto-create toc in md with :TOC
-    { 'richardbizik/nvim-toc',
-        config = function()
-            require('nvim-toc').setup()
-        end },
 
     -- automatic mgmt of hlsearch
     { 'asiryk/auto-hlsearch.nvim',
