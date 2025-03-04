@@ -84,7 +84,9 @@ return require('lazy').setup({
     { 'chrisgrieser/nvim-various-textobjs',
         event = 'UIEnter',
         opts = {
-            useDefaultKeymaps = true
+            keymaps = {
+                useDefaults = true
+            }
         },
     },
 
