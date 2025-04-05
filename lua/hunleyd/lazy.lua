@@ -15,9 +15,6 @@ vim.opt.rtp:prepend(lazypath)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
--- tiny-inline-diagnostic requires this
-vim.diagnostic.config({ virtual_text = false })
-
 return require('lazy').setup({
     -- auto-star whatever plugins we use
     { 'jsongerber/thanks.nvim',
@@ -311,16 +308,6 @@ return require('lazy').setup({
 
     -- automatic  restoration of view when switching buffers
     { 'BranimirE/fix-auto-scroll.nvim', config = true, event = 'VeryLazy' },
-
-    -- prettier diagnostics
-    { 'rachartier/tiny-inline-diagnostic.nvim', event = 'VeryLazy',
-        priority = 1000,
-        config = function()
-            require('tiny-inline-diagnostic').setup({
-                    preset = 'minimal',
-                })
-        end
-    },
 
     -- make misspellings diag errors
     { 'ravibrock/spellwarn.nvim', event = 'VeryLazy', config = true, },

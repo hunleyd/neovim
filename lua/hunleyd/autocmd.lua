@@ -66,3 +66,55 @@ vim.api.nvim_create_autocmd('BufReadPost', {
   end,
 })
 
+-- Ensure that the binary spl file is up-to-date with the source add file
+vim.api.nvim_create_autocmd("FocusGained", {
+  pattern = "*",
+  callback = function()
+    local config_path = vim.fn.stdpath("config") -- Get Neovim's config path
+    local add_file = config_path .. "/spell/en.utf-8.add"
+    local spl_file = config_path .. "/spell/en.utf-8.add.spl"
+
+    if vim.fn.filereadable(add_file) == 1 then
+      local add_mtime = vim.fn.getftime(add_file) -- Get modification time of .add file
+      local spl_mtime = vim.fn.getftime(spl_file) -- Get modification time of .add.spl file
+
+      -- Run mkspell! only if .add is newer than .add.spl or .add.spl doesn't exist
+      if add_mtime > spl_mtime or spl_mtime == -1 then
+        vim.cmd("silent! mkspell! " .. spl_file .. " " .. add_file)
+      end
+    end
+  end,
+})
+
+-- use vtext for diags and stuff
+local og_virt_text
+local og_virt_line
+vim.api.nvim_create_autocmd({ 'CursorMoved', 'DiagnosticChanged' }, {
+  group = vim.api.nvim_create_augroup('diagnostic_only_virtlines', {}),
+  callback = function()
+    if og_virt_line == nil then
+      og_virt_line = vim.diagnostic.config().virtual_lines
+    end
+
+    -- ignore if virtual_lines.current_line is disabled
+    if not (og_virt_line and og_virt_line.current_line) then
+      if og_virt_text then
+        vim.diagnostic.config({ virtual_text = og_virt_text })
+        og_virt_text = nil
+      end
+      return
+    end
+
+    if og_virt_text == nil then
+      og_virt_text = vim.diagnostic.config().virtual_text
+    end
+
+    local lnum = vim.api.nvim_win_get_cursor(0)[1] - 1
+
+    if vim.tbl_isempty(vim.diagnostic.get(0, { lnum = lnum })) then
+      vim.diagnostic.config({ virtual_text = og_virt_text })
+    else
+      vim.diagnostic.config({ virtual_text = false })
+    end
+  end
+})
