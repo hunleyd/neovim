@@ -86,3 +86,11 @@ modprobe
 PGDG
 CVE
 Yorvi
+outlier
+realtime
+AppStream
+common_files_dir
+inventory_dir
+codebase
+misconfigurations
+preflight
