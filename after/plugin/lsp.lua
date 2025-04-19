@@ -76,3 +76,5 @@ cmp.setup.cmdline(':', {
     }
   })
 })
+
+require('lspconfig').harper_ls.setup {}

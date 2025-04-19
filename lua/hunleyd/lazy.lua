@@ -33,26 +33,53 @@ return require('lazy').setup({
     { 'mbbill/undotree' },
 
     -- theme
-    { '0xstepit/flow.nvim', lazy = false, priority = 1000, tag = 'v2.0.0',
-        opts = {
-            theme = {
-                style = 'dark',
-                contrast = 'high',
-                transparent = false,
-            },
-            colors = {
-                mode = 'light',
-                fluo = 'cyan',
-            },
-            ui = {
-                borders = 'inverse',
-                aggressive_spell = 'false',
-            },
-        },
-        config = function(_, opts)
-            require('flow').setup(opts)
-            vim.cmd("colorscheme flow")
-        end
+    -- { '0xstepit/flow.nvim', lazy = false, priority = 1000, tag = 'v2.0.0',
+    --     opts = {
+    --         theme = {
+    --             style = 'dark',
+    --             contrast = 'high',
+    --             transparent = false,
+    --         },
+    --         colors = {
+    --             mode = 'light',
+    --             fluo = 'cyan',
+    --         },
+    --         ui = {
+    --             borders = 'inverse',
+    --             aggressive_spell = 'false',
+    --         },
+    --     },
+    --     config = function(_, opts)
+    --         require('flow').setup(opts)
+    --         vim.cmd("colorscheme flow")
+    --     end
+    -- },
+    -- lazy.nvim
+    {
+      "comfysage/cuddlefish.nvim",
+      config = function()
+        require('cuddlefish').setup({
+          theme = {
+            accent = 'pink',
+          },
+          editor = {
+            transparent_background = false,
+          },
+          style = {
+            tabline = { 'reverse' },
+            search = { 'italic', 'reverse' },
+            incsearch = { 'italic', 'reverse' },
+            types = { 'italic' },
+            keyword = { 'italic' },
+            comment = { 'italic' },
+          },
+          overrides = function(colors)
+            return {}
+          end,
+        })
+
+        vim.cmd.colorscheme [[cuddlefish]]
+      end
     },
 
     -- make Jim better at vi
