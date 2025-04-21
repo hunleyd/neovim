@@ -15,13 +15,13 @@ vim.keymap.set("n", "N", "Nzzzv")
 -- greatest remap ever (paste w/o overwriting the paste buffer)
 vim.keymap.set("x", "<leader>p", [["_dP]])
 
--- next greatest remap ever : asbjornHaland (y to yank to vim, leader-Y to yank to system)
+-- next greatest remap ever : (y to yank to vim, leader-Y to yank to system)
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
 
 vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 
--- This is going to get me cancelled
+-- This is going to get me canceled
 vim.keymap.set("i", "<C-c>", "<Esc>")
 
 vim.keymap.set("n", "Q", "<nop>")
@@ -40,6 +40,7 @@ vim.keymap.set("n", "\\\\", ":term<CR>")
 vim.keymap.set("n", "cd", ":lua MiniFiles.open()<CR>")
 vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
 vim.keymap.set("n", "<leader>y", "<cmd>YankBank<CR>", { noremap = true })
+vim.keymap.set("n", "ycc", "yygccp", { remap = true })
 
 
 -- lsp diagnostics
