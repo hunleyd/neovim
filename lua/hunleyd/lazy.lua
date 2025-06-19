@@ -33,60 +33,52 @@ return require('lazy').setup({
     { 'mbbill/undotree' },
 
     -- theme
-    -- { '0xstepit/flow.nvim', lazy = false, priority = 1000, tag = 'v2.0.0',
-    --     opts = {
-    --         theme = {
-    --             style = 'dark',
-    --             contrast = 'high',
-    --             transparent = false,
-    --         },
-    --         colors = {
-    --             mode = 'light',
-    --             fluo = 'cyan',
-    --         },
-    --         ui = {
-    --             borders = 'inverse',
-    --             aggressive_spell = 'false',
-    --         },
-    --     },
-    --     config = function(_, opts)
-    --         require('flow').setup(opts)
-    --         vim.cmd("colorscheme flow")
-    --     end
+    -- {
+    --   "comfysage/cuddlefish.nvim",
+    --   config = function()
+    --     require('cuddlefish').setup({
+    --       theme = {
+    --         accent = 'pink',
+    --       },
+    --       editor = {
+    --         transparent_background = false,
+    --       },
+    --       style = {
+    --         tabline = { 'reverse' },
+    --         search = { 'italic', 'reverse' },
+    --         incsearch = { 'italic', 'reverse' },
+    --         types = { 'italic' },
+    --         keyword = { 'italic' },
+    --         comment = { 'italic' },
+    --       },
+    --       overrides = function(colors)
+    --         return {}
+    --       end,
+    --     })
+    --
+    --     vim.cmd.colorscheme [[cuddlefish]]
+    --   end
     -- },
-    -- lazy.nvim
-    {
-      "comfysage/cuddlefish.nvim",
-      config = function()
-        require('cuddlefish').setup({
-          theme = {
-            accent = 'pink',
-          },
-          editor = {
-            transparent_background = false,
-          },
-          style = {
-            tabline = { 'reverse' },
-            search = { 'italic', 'reverse' },
-            incsearch = { 'italic', 'reverse' },
-            types = { 'italic' },
-            keyword = { 'italic' },
-            comment = { 'italic' },
-          },
-          overrides = function(colors)
-            return {}
-          end,
-        })
-
-        vim.cmd.colorscheme [[cuddlefish]]
-      end
+    { 'github-main-user/lytmode.nvim',
+        lazy = false,
+        priority = 1000,
+        config = function()
+            require('lytmode').setup({
+                    color_overrides = {
+                        lytBack = '#000000',
+                    },
+                })
+        end,
     },
-
+   
     -- make Jim better at vi
     { 'm4xshen/hardtime.nvim',
+        opts = {},
+        event = 'BufEnter',
         config = function()
             require('hardtime').setup()
-        end },
+	end,
+    },
 
     -- make t/T/f/F repeatable with ; and '
     { 'mawkler/demicolon.nvim',
