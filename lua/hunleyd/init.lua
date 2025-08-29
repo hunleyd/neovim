@@ -26,4 +26,4 @@ vim.diagnostic.config({
   update_in_insert = false
 })
 
-vim.cmd.colorscheme [[lytmode]]
+vim.cmd.colorscheme [[glowbeam]]

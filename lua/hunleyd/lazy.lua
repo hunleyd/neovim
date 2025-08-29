@@ -33,44 +33,8 @@ return require('lazy').setup({
     { 'mbbill/undotree' },
 
     -- theme
-    -- {
-    --   "comfysage/cuddlefish.nvim",
-    --   config = function()
-    --     require('cuddlefish').setup({
-    --       theme = {
-    --         accent = 'pink',
-    --       },
-    --       editor = {
-    --         transparent_background = false,
-    --       },
-    --       style = {
-    --         tabline = { 'reverse' },
-    --         search = { 'italic', 'reverse' },
-    --         incsearch = { 'italic', 'reverse' },
-    --         types = { 'italic' },
-    --         keyword = { 'italic' },
-    --         comment = { 'italic' },
-    --       },
-    --       overrides = function(colors)
-    --         return {}
-    --       end,
-    --     })
-    --
-    --     vim.cmd.colorscheme [[cuddlefish]]
-    --   end
-    -- },
-    { 'github-main-user/lytmode.nvim',
-        lazy = false,
-        priority = 1000,
-        config = function()
-            require('lytmode').setup({
-                    color_overrides = {
-                        lytBack = '#000000',
-                    },
-                })
-        end,
-    },
-   
+    { 'cooperuser/glowbeam.nvim' },
+
     -- make Jim better at vi
     { 'm4xshen/hardtime.nvim',
         opts = {},
@@ -150,7 +114,7 @@ return require('lazy').setup({
     },
 
     -- load mini plugin collection
-    { 'echasnovski/mini.nvim',
+    { 'nvim-mini/mini.nvim',
         version = false,
         config = function()
             require('mini.basics').setup({
@@ -277,7 +241,7 @@ return require('lazy').setup({
             })
             require('mini.trailspace').setup({})
         end },
-     { "echasnovski/mini.icons", opts = {}, lazy = true, specs = { { "nvim-tree/nvim-web-devicons", enabled = false, optional = true }, }, init = function() package.preload["nvim-web-devicons"] = function() require("mini.icons").mock_nvim_web_devicons() return package.loaded["nvim-web-devicons"] end end, },
+     { "nvim-mini/mini.icons", opts = {}, lazy = true, specs = { { "nvim-tree/nvim-web-devicons", enabled = false, optional = true }, }, init = function() package.preload["nvim-web-devicons"] = function() require("mini.icons").mock_nvim_web_devicons() return package.loaded["nvim-web-devicons"] end end, },
 
     -- additional spellcheck lists, updated on every pull
     { 'psliwka/vim-dirtytalk', build = ':DirtytalkUpdate' },
@@ -287,7 +251,7 @@ return require('lazy').setup({
 
     -- markdown rendering
     { 'MeanderingProgrammer/markdown.nvim',
-        dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.nvim' },
+        dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-mini/mini.nvim' },
         config = function()
             require('render-markdown').setup({})
         end,
@@ -325,7 +289,7 @@ return require('lazy').setup({
     -- automatic handling of relativenumber
     { 'sitiom/nvim-numbertoggle' },
 
-    -- automatic  restoration of view when switching buffers
+    -- automatic restoration of view when switching buffers
     { 'BranimirE/fix-auto-scroll.nvim', config = true, event = 'VeryLazy' },
 
     -- make misspellings diag errors

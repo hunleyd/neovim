@@ -97,3 +97,7 @@ preflight
 BoM
 jobs
 backrest
+crypto
+DNS
+OpenSSL
+OpenSSH

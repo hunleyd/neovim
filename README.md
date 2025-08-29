@@ -49,7 +49,7 @@ NVIM_APPNAME=hunleyd/neovim/lua/hunleyd nvim
 ### icon
 
 + [nvim-tree/nvim-web-devicons](https://dotfyle.com/plugins/nvim-tree/nvim-web-devicons)
-+ [echasnovski/mini.icons](https://dotfyle.com/plugins/echasnovski/mini.icons)
++ [nvim-mini/mini.icons](https://dotfyle.com/plugins/nvim-mini/mini.icons)
 ### keybinding
 
 + [mawkler/demicolon.nvim](https://dotfyle.com/plugins/mawkler/demicolon.nvim)
@@ -83,7 +83,7 @@ NVIM_APPNAME=hunleyd/neovim/lua/hunleyd nvim
 + [nvim-treesitter/nvim-treesitter](https://dotfyle.com/plugins/nvim-treesitter/nvim-treesitter)
 ### utility
 
-+ [echasnovski/mini.nvim](https://dotfyle.com/plugins/echasnovski/mini.nvim)
++ [nvim-mini/mini.nvim](https://dotfyle.com/plugins/nvim-mini/mini.nvim)
 + [BranimirE/fix-auto-scroll.nvim](https://dotfyle.com/plugins/BranimirE/fix-auto-scroll.nvim)
 + [jsongerber/thanks.nvim](https://dotfyle.com/plugins/jsongerber/thanks.nvim)
 + [sitiom/nvim-numbertoggle](https://dotfyle.com/plugins/sitiom/nvim-numbertoggle)
