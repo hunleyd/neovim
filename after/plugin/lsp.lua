@@ -20,16 +20,24 @@ require('mason-lspconfig').setup({
     -- this first function is the "default handler"
     -- it applies to every language server without a "custom handler"
     function(server_name)
-      require('lspconfig')[server_name].setup({})
+      -- require('lspconfig')[server_name].setup({})
+      vim.lsp.config(server_name, {})
+      vim.lsp.enable({server_name})
     end,
 
     -- this is the "custom handler" for `lua_ls`
     lua_ls = function()
-      require('lspconfig').lua_ls.setup({
-        on_init = function(client)
+      -- require('lspconfig').lua_ls.setup({
+        -- on_init = function(client)
+          -- lsp_zero.nvim_lua_settings(client, {})
+        -- end,
+      -- })
+      vim.lsp.config("lua_ls", {
+        on_init = function (client)
           lsp_zero.nvim_lua_settings(client, {})
         end,
-      })
+        })
+      vim.lsp.enable({"lua_ls"})
     end,
   }
 })
@@ -77,4 +85,6 @@ cmp.setup.cmdline(':', {
   })
 })
 
-require('lspconfig').harper_ls.setup {}
+-- require('lspconfig').harper_ls.setup {}
+vim.lsp.config("harper_ls", {})
+vim.lsp.enable({"harper_ls"})
