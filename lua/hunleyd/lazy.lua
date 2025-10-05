@@ -204,11 +204,19 @@ return require('lazy').setup({
             local hipatterns = require('mini.hipatterns')
             hipatterns.setup({
                 highlighters = {
-                    -- Highlight standalone 'FIXME', 'HACK', 'TODO', 'NOTE'
-                    fixme = { pattern = '%f[%w]()FIXME()%f[%W]', group = 'MiniHipatternsFixme' },
-                    hack  = { pattern = '%f[%w]()HACK()%f[%W]',  group = 'MiniHipatternsHack'  },
-                    todo  = { pattern = '%f[%w]()TODO()%f[%W]',  group = 'MiniHipatternsTodo'  },
-                    note  = { pattern = '%f[%w]()NOTE()%f[%W]',  group = 'MiniHipatternsNote'  },
+                    -- https://github.com/nvim-mini/mini.nvim/discussions/783#discussion-6468947
+                    fixme       = { pattern = "() FIXME():",   group = "MiniHipatternsFixme" },
+                    hack        = { pattern = "() HACK():",    group = "MiniHipatternsHack" },
+                    todo        = { pattern = "() TODO():",    group = "MiniHipatternsTodo" },
+                    note        = { pattern = "() NOTE():",    group = "MiniHipatternsNote" },
+                    fixme_colon = { pattern = " FIXME():()",   group = "MiniHipatternsFixmeColon" },
+                    hack_colon  = { pattern = " HACK():()",    group = "MiniHipatternsHackColon" },
+                    todo_colon  = { pattern = " TODO():()",    group = "MiniHipatternsTodoColon" },
+                    note_colon  = { pattern = " NOTE():()",    group = "MiniHipatternsNoteColon" },
+                    fixme_body  = { pattern = " FIXME:().*()", group = "MiniHipatternsFixmeBody" },
+                    hack_body   = { pattern = " HACK:().*()",  group = "MiniHipatternsHackBody" },
+                    todo_body   = { pattern = " TODO:().*()",  group = "MiniHipatternsTodoBody" },
+                    note_body   = { pattern = " NOTE:().*()",  group = "MiniHipatternsNoteBody" },
                     -- Highlight hex color strings (`#rrggbb`) using that color
                     hex_color = hipatterns.gen_highlighter.hex_color(),
                 },
@@ -281,6 +289,13 @@ return require('lazy').setup({
     },
 
     -- scrollbar since i can't get mini.map scrollbar to work
+    { 'karb94/neoscroll.nvim',
+        opts = {},
+        config = function()
+            require('neoscroll').setup()
+        end ,
+    },
+
     { 'ojroques/nvim-scrollbar',
         config = function()
             require('scrollbar').setup()
