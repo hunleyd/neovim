@@ -51,3 +51,6 @@ vim.keymap.set(
 	vim.diagnostic.setloclist,
 	vim.tbl_extend("force", opts, { desc = "send diagnostics to loc list" })
 )
+
+-- YankBank
+vim.keymap.set("n", "<leader>y", "<cmd>YankBank<CR>", { noremap = true })

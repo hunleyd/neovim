@@ -19,11 +19,11 @@ autocmd('TextYankPost', {
     end,
 })
 
-vim.diagnostic.config({
-  virtual_text = true,
-  virtual_lines = { current_line = true },
-  underline = true,
-  update_in_insert = false
-})
+-- vim.diagnostic.config({
+--   virtual_text = true,
+--   virtual_lines = { current_line = true },
+--   underline = true,
+--   update_in_insert = false
+-- })
 
 vim.cmd.colorscheme [[glowbeam]]

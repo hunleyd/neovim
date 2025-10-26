@@ -187,6 +187,7 @@ return require('lazy').setup({
             })
             require('mini.comment').setup()
             require('mini.diff').setup({})
+            require('mini.extra').setup({})
             require('mini.files').setup({
                 mappings = {
                     close       = 'q',
@@ -267,6 +268,8 @@ return require('lazy').setup({
 
     -- ansible syntax highlighting
     { 'pearofducks/ansible-vim' },
+    { 'pearofducks/ansible-vim' },
+    { 'mfussenegger/nvim-ansible' },
     { 'mfussenegger/nvim-ansible' },
 
     -- where in the YAML structure are we
@@ -284,6 +287,9 @@ return require('lazy').setup({
         config = function()
             require('yankbank').setup({
                 persist_type = "sqlite",
+                registers = {
+                    yank_register = "+",
+                },
             })
         end,
     },
@@ -309,6 +315,16 @@ return require('lazy').setup({
 
     -- make misspellings diag errors
     { 'ravibrock/spellwarn.nvim', event = 'VeryLazy', config = true, },
+
+    -- handle diagnostics better
+    { "rachartier/tiny-inline-diagnostic.nvim",
+        event = "VeryLazy",
+        priority = 1000,
+        config = function()
+            require("tiny-inline-diagnostic").setup()
+            vim.diagnostic.config({ virtual_text = false }) -- Disable Neovim's default virtual text diagnostics
+        end,
+    },
 
     -- telescope
     -- see after/plugin/telescope.lua for config
