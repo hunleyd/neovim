@@ -38,8 +38,6 @@ vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 -- my shit
 vim.keymap.set("n", "\\\\", ":term<CR>")
 vim.keymap.set("n", "cd", ":lua MiniFiles.open()<CR>")
-vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
-vim.keymap.set("n", "<leader>y", "<cmd>YankBank<CR>", { noremap = true })
 vim.keymap.set("n", "ycc", "yygccp", { remap = true })
 
 
@@ -54,3 +52,6 @@ vim.keymap.set(
 
 -- YankBank
 vim.keymap.set("n", "<leader>y", "<cmd>YankBank<CR>", { noremap = true })
+
+-- Atone
+vim.keymap.set("n", "<leader>u", "<cmd>Atone toggle<CR>", { noremap = true })

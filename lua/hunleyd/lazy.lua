@@ -30,7 +30,10 @@ return require('lazy').setup({
         end },
 
     -- undotree
-    { 'mbbill/undotree' },
+    { 'XXiaoA/atone.nvim',
+    	cmd = 'Atone',
+	    opts = {},
+    },
 
     -- theme
     { 'cooperuser/glowbeam.nvim' },
