@@ -1,1 +1,1 @@
-require("hunleyd")
+MiniMax/configs/nvim-0.11/init.lua

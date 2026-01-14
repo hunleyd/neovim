@@ -1,0 +1,3 @@
+[submodule "MiniMax"]
+	path = MiniMax
+	url = git@github.com:nvim-mini/MiniMax.git
