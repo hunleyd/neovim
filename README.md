@@ -40,6 +40,7 @@ NVIM_APPNAME=hunleyd/neovim/lua/hunleyd nvim
 
 + [chrisgrieser/nvim-various-textobjs](https://dotfyle.com/plugins/chrisgrieser/nvim-various-textobjs)
 + [ptdewey/yankbank-nvim](https://dotfyle.com/plugins/ptdewey/yankbank-nvim)
++ [XXiaoA/atone.nvim](https://dotfyle.com/plugins/XXiaoA/atone.nvim)
 ### fuzzy-finder
 
 + [nvim-telescope/telescope.nvim](https://dotfyle.com/plugins/nvim-telescope/telescope.nvim)
