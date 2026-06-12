@@ -1,87 +1,53 @@
--- ┌────────────────────┐
--- │ Welcome to MiniMax │
--- └────────────────────┘
---
--- This is a config designed to mostly use MINI. It provides out of the box
--- a stable, polished, and feature rich Neovim experience. Its structure:
---
--- ├ init.lua          Initial (this) file executed during startup
--- ├ plugin/           Files automatically sourced during startup
--- ├── 10_options.lua  Built-in Neovim behavior
--- ├── 20_keymaps.lua  Custom mappings
--- ├── 30_mini.lua     MINI configuration
--- ├── 40_plugins.lua  Plugins outside of MINI
--- ├ snippets/         User defined snippets (has demo file)
--- ├ after/            Files to override behavior added by plugins
--- ├── ftplugin/       Files for filetype behavior (has demo file)
--- ├── lsp/            Language server configurations (has demo file)
--- ├── snippets/       Higher priority snippet files (has demo file)
---
--- Config files are meant to be read, preferably inside a Neovim instance running
--- this config and opened at its root. This will help you better understand your
--- setup. Start with this file. Any order is possible, prefer the one listed above.
--- Ways of navigating your config:
--- - `<Space>` + `e` + (one of) `iokmp` - edit 'init.lua' or 'plugin/' files.
--- - Inside config directory: `<Space>ff` (picker) or `<Space>ed` (explorer)
--- - Navigate existing buffers with `[b`, `]b`, or `<Space>fb`.
---
--- Config files are also meant to be customized. Initially it is a baseline of
--- a working config based on MINI. Modify it to make it yours. Some approaches:
--- - Modify already existing files in a way that keeps them consistent.
--- - Add new files in a way that keeps config consistent.
---   Usually inside 'plugin/' or 'after/'.
---
--- Documentation comments like this can be found throughout the config.
--- Common conventions:
---
--- - See `:h key-notation` for key notation used.
--- - `:h xxx` means "documentation of helptag xxx". Either type text directly
---   followed by Enter or type `<Space>fh` to open a helptag fuzzy picker.
--- - "Type `<Space>fh`" means "press <Space>, followed by f, followed by h".
---   Unless said otherwise, it assumes that Normal mode is current.
--- - "See 'path/to/file'" means see open file at described path and read it.
--- - `:SomeCommand ...` or `:lua ...` means execute mentioned command.
+-------------------------------------------------------------------------------
+-- NEOVIM 0.12 CONFIGURATION (FROM SCRATCH)
+-------------------------------------------------------------------------------
+-- This configuration is designed to be modular, efficient, and deeply personalized.
+-- It strictly leverages the latest native features of Neovim 0.12 (like UI2) 
+-- while maintaining a rigid "no-mouse" philosophy to enforce better, faster
+-- editing habits.
+-------------------------------------------------------------------------------
 
--- Bootstrap 'mini.nvim' manually in a way that it gets managed by 'mini.deps'
-local mini_path = vim.fn.stdpath('data') .. '/site/pack/deps/start/mini.nvim'
-if not vim.loop.fs_stat(mini_path) then
-  vim.cmd('echo "Installing `mini.nvim`" | redraw')
-  local origin = 'https://github.com/nvim-mini/mini.nvim'
-  local clone_cmd = { 'git', 'clone', '--filter=blob:none', origin, mini_path }
-  vim.fn.system(clone_cmd)
-  vim.cmd('packadd mini.nvim | helptags ALL')
-  vim.cmd('echo "Installed `mini.nvim`" | redraw')
-end
+-- 1. EXPERIMENTAL FEATURES (UI2)
+-- Enable the new native UI2 layer for message handling and the command line.
+-- Why: Historically, Neovim messages and commands lived at the bottom of the 
+-- screen, often causing disruptive "Press ENTER to continue" prompts. UI2 
+-- modernizes this by routing these into floating windows or scrollable pagers,
+-- keeping your view of the code completely uninterrupted.
+pcall(function() 
+    require('vim._core.ui2').enable({
+        msg = {
+            targets = {
+                [''] = 'msg',          -- Default for most messages (floats)
+                echo = 'msg',          -- Standard :echo outputs (floats)
+                echomsg = 'msg',       -- :echomsg history (floats)
+                emsg = 'pager',        -- Errors (pager for easier reading)
+                lua_error = 'pager',   -- Lua stack traces (pager)
+                progress = 'msg',      -- LSP/Plugin progress (floats)
+            }
+        }
+    }) 
+end)
 
--- Plugin manager. Set up immediately for `now()`/`later()` helpers.
--- Example usage:
--- - `MiniDeps.add('...')` - use inside config to add a plugin
--- - `:DepsUpdate` - update all plugins
--- - `:DepsSnapSave` - save a snapshot of currently active plugins
---
--- See also:
--- - `:h MiniDeps-overview` - how to use it
--- - `:h MiniDeps-commands` - all available commands
--- - 'plugin/30_mini.lua' - more details about 'mini.nvim' in general
-require('mini.deps').setup()
+-- 2. LEADER KEYS
+-- The Leader key acts as the primary prefix for all custom shortcuts.
+-- Why: Spacebar is the largest key on the keyboard and is easily accessible 
+-- by both thumbs without moving your hands off the home row.
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
--- Define config table to be able to pass data between scripts
-_G.Config = {}
+-- 3. LOAD MODULES
+-- We split the config into separate, focused files in the 'lua/' folder.
+-- Why: Prevents init.lua from becoming a monolithic, 1000-line mess. It makes
+-- debugging and tweaking specific parts of the editor much faster.
+require("options")   -- Editor settings (line numbers, boundaries, spellcheck)
+require("keymaps")   -- Custom shortcuts, movement overrides, and pasting logic
+require("autocmds")  -- Background events (smart numbers, persistence, floats)
 
--- Define custom autocommand group and helper to create an autocommand.
--- Autocommands are Neovim's way to define actions that are executed on events
--- (like creating a buffer, setting an option, etc.).
---
--- See also:
--- - `:h autocommand`
--- - `:h nvim_create_augroup()`
--- - `:h nvim_create_autocmd()`
-local gr = vim.api.nvim_create_augroup('custom-config', {})
-_G.Config.new_autocmd = function(event, pattern, callback, desc)
-  local opts = { group = gr, pattern = pattern, callback = callback, desc = desc }
-  vim.api.nvim_create_autocmd(event, opts)
-end
+-- 4. PLUGIN SYSTEM
+-- This delegates all plugin installation, updating, and specific plugin setups.
+-- Why: We use a custom pack-manager script instead of heavy plugins like Lazy
+-- to maintain absolute control over the load order and keep startup times minimal.
+require("plugins").setup()
 
--- Some plugins and 'mini.nvim' modules only need setup during startup if Neovim
--- is started like `nvim -- path/to/file`, otherwise delaying setup is fine
-_G.Config.now_if_args = vim.fn.argc(-1) > 0 and MiniDeps.now or MiniDeps.later
+-- Final visual confirmation that the modular load succeeded.
+vim.notify("Neovim 0.12 config initialized!")
