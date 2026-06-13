@@ -222,6 +222,7 @@ function M.setup()
 
     -- Create :PackUpdate command for manual use
     vim.api.nvim_create_user_command("PackUpdate", function() M.update_plugins() end, {})
+    vim.api.nvim_create_user_command("PackTSUpdate", function() vim.cmd("TSUpdate") end, {})
     M.check_for_weekly_update()
 
     -- 4. PLUGIN-SPECIFIC CONFIGURATIONS
@@ -497,7 +498,7 @@ function M.setup()
                 end,
                 { name = 'Edit new buffer', action = 'enew', section = 'Actions:' },
                 { name = 'Update Plugins' .. get_last_update_text(), action = 'PackUpdate', section = 'Actions:' },
-                { name = 'Update Treesitter', action = 'TSUpdate', section = 'Actions:' },
+                { name = 'Update Treesitter', action = 'PackTSUpdate', section = 'Actions:' },
                 { name = 'Quit Neovim', action = 'qall', section = 'Actions:' },
             },
             header = table.concat({
