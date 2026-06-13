@@ -152,20 +152,24 @@ function M.update_plugins()
     for name, _ in pairs(plugins) do
         local path = pack_path .. "/" .. name
         if vim.fn.empty(vim.fn.glob(path)) == 0 then
-            vim.system({ "git", "-C", path, "pull" }, { text = true }, function(obj)
-                current = current + 1
-                vim.schedule(function()
-                    if obj.code == 0 then
-                        if not obj.stdout:match("Already up to date") then
+            vim.system({ "git", "-C", path, "fetch", "origin" }, { text = true }, function(obj)
+                if obj.code ~= 0 then
+                    vim.notify("Failed to fetch " .. name .. ": " .. (obj.stderr or ""), vim.log.levels.ERROR)
+                    return
+                end
+                vim.system({ "git", "-C", path, "reset", "--hard", "origin/HEAD" }, { text = true }, function(obj)
+                    current = current + 1
+                    vim.schedule(function()
+                        if obj.code == 0 then
                             vim.notify("Updated " .. name)
                             if name == "vim-dirtytalk" then
                                 M.dirtytalk_update_fix()
                             end
+                        else
+                            vim.notify("Failed to reset " .. name .. ": " .. (obj.stderr or ""), vim.log.levels.ERROR)
                         end
-                    else
-                        vim.notify("Failed to update " .. name .. ": " .. (obj.stderr or ""), vim.log.levels.ERROR)
-                    end
-                    if current == total then on_done() end
+                        if current == total then on_done() end
+                    end)
                 end)
             end)
         else
