@@ -238,6 +238,11 @@ function M.setup()
     end, {})
     M.check_for_weekly_update()
 
+    -- 2. Load into current session
+    for name, _ in pairs(plugins) do
+        vim.cmd('packadd ' .. name)
+    end
+
     -- 4. PLUGIN-SPECIFIC CONFIGURATIONS
 
     -- Colorscheme: Apply Meowsoot
