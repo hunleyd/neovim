@@ -1129,7 +1129,7 @@ function M.setup()
             relculright = true,
             segments = {
                 { text = { builtin.foldfunc }, click = "v:lua.ScFa" },
-                { text = { builtin.signfunc }, click = "v:lua.ScSa" },
+                { text = { builtin.signfunc }, click = "v:lua.ScSa", sign = { name = { ".*" }, maxwidth = 1, colwidth = 1 } },
                 { text = { builtin.lnumfunc, " " }, click = "v:lua.ScLa" },
             },
         })
