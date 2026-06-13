@@ -1184,6 +1184,7 @@ function M.setup()
         vim.api.nvim_create_autocmd('FileType', {
             pattern = {'sh', 'bash', 'zsh'},
             callback = function()
+                vim.notify("Attaching bashls to " .. vim.bo.filetype)
                 vim.lsp.start({
                     name = 'bashls',
                     cmd = {'bash-language-server', 'start'},
