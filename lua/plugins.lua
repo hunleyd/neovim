@@ -1144,7 +1144,10 @@ function M.setup()
 
     if status_mason and status_mason_lsp then
         -- Native LSP configuration: merges with nvim-lspconfig defaults
-        vim.lsp.config('lua_ls', { root_markers = { '.luarc.json' } })
+        vim.lsp.config('lua_ls', { 
+            root_markers = { '.luarc.json', '.git' },
+            root_dir = vim.loop.cwd()
+        })
         
         -- Safe blocks for common servers to prevent crashes (explicit settings object required)
         vim.lsp.config('harper_ls', { settings = {} })
