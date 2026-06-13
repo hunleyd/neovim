@@ -1131,6 +1131,9 @@ function M.setup()
     end
 
     -- 5. MASON & LSP (Neovim 0.12 Native Style)
+    local mason_path = vim.fn.stdpath("data") .. "/mason/bin"
+    vim.env.PATH = mason_path .. ":" .. vim.env.PATH
+    
     local status_mason, mason = pcall(require, 'mason')
     local status_mason_lsp, mason_lsp = pcall(require, 'mason-lspconfig')
 
