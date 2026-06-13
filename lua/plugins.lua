@@ -15,8 +15,8 @@ local M = {}
 -- 1. PLUGIN LIST
 -- Define all desired plugins here. Key is folder name, value is GitHub URL.
 local plugins = {
-    ["lush.nvim"] = "https://github.com/rktjmp/lush.nvim", -- Dependency for Glowbeam
-    ["glowbeam.nvim"] = "https://github.com/cooperuser/glowbeam.nvim", -- Colorscheme
+    ["lush.nvim"] = "https://github.com/rktjmp/lush.nvim", -- Dependency for Meowsoot
+    ["meowsoot.nvim"] = "https://github.com/marekh19/meowsoot.nvim", -- Colorscheme
     ["nui.nvim"] = "https://github.com/MunifTanjim/nui.nvim", -- UI component library
     ["nvim-treesitter"] = "https://github.com/nvim-treesitter/nvim-treesitter", -- Syntax highlighting
     ["nvim-treesitter-textobjects"] = "https://github.com/nvim-treesitter/nvim-treesitter-textobjects",
@@ -222,8 +222,8 @@ function M.setup()
 
     -- 4. PLUGIN-SPECIFIC CONFIGURATIONS
 
-    -- Colorscheme: Apply Glowbeam (requires lush.nvim)
-    pcall(vim.cmd.colorscheme, "glowbeam")
+    -- Colorscheme: Apply Meowsoot
+    pcall(vim.cmd.colorscheme, "meowsoot")
 
     -- Treesitter: Structural code understanding and highlighting
     local status_ts, ts_configs = pcall(require, 'nvim-treesitter.configs')
