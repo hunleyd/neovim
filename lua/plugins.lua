@@ -39,14 +39,14 @@ local plugins = {
     ["tiny-cmdline.nvim"] = "https://github.com/rachartier/tiny-cmdline.nvim", -- Centered command line
 }
 
-local pack_path = vim.fn.stdpath("config") .. "/pack/plugins/start"
+local pack_path = vim.fn.stdpath("config") .. "/pack/plugins/opt"
 local state_path = vim.fn.stdpath("data") .. "/plugin_update_state"
 
 -- 1. MANAGEMENT LOGIC
 
 -- Custom fix for vim-dirtytalk to compile its word list silently.
 function M.dirtytalk_update_fix()
-    local wordlists_dir = vim.fn.stdpath('config') .. '/pack/plugins/start/vim-dirtytalk/wordlists/'
+    local wordlists_dir = vim.fn.stdpath('config') .. '/pack/plugins/opt/vim-dirtytalk/wordlists/'
     local wordlists_files = vim.fn.glob(wordlists_dir .. '*.words', true, true)
     local blacklist = vim.g.dirtytalk_blacklist or {}
     local wordlist_full = {}
@@ -191,6 +191,10 @@ end
 
 -- Prompt for a full update if it's been more than 7 days.
 function M.check_for_weekly_update()
+    -- 2. Load into current session
+    for name, _ in pairs(plugins) do
+        vim.cmd("packadd " .. name)
+    end
     local f = io.open(state_path, "r")
     local last_update = 0
     if f then
@@ -237,6 +241,10 @@ function M.setup()
         vim.cmd("TSUpdate")
     end, {})
     M.check_for_weekly_update()
+    -- 2. Load into current session
+    for name, _ in pairs(plugins) do
+        vim.cmd("packadd " .. name)
+    end
 
     -- 2. Load into current session
     -- Packages in 'start/' are loaded automatically by Neovim.
