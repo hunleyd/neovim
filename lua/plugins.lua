@@ -1176,38 +1176,6 @@ function M.setup()
             end,
         })
 
-        -- 4. Enable servers via autocommands
-        vim.api.nvim_create_autocmd('FileType', {
-            pattern = 'lua',
-            callback = function() vim.lsp.enable('lua_ls') end,
-        })
-        vim.api.nvim_create_autocmd('FileType', {
-            pattern = {'sh', 'bash', 'zsh'},
-            callback = function()
-                vim.notify("Attaching bashls to " .. vim.bo.filetype)
-                vim.lsp.start({
-                    name = 'bashls',
-                    cmd = {'bash-language-server', 'start'},
-                    root_dir = vim.fs.dirname(vim.fs.find({'.git'}, {upward=true})[1] or vim.fn.expand('%:p:h'))
-                })
-            end,
-        })
-        vim.api.nvim_create_autocmd('FileType', {
-            pattern = 'python',
-            callback = function() vim.lsp.enable('pyright') end,
-        })
-        vim.api.nvim_create_autocmd('FileType', {
-            pattern = 'yaml',
-            callback = function() vim.lsp.enable('yamlls') end,
-        })
-        vim.api.nvim_create_autocmd('FileType', {
-            pattern = {'typescript', 'javascript', 'typescriptreact'},
-            callback = function() vim.lsp.enable('ts_ls') end,
-        })
-        vim.api.nvim_create_autocmd('FileType', {
-            pattern = {'lua', 'python', 'sh', 'bash', 'zsh', 'yaml', 'typescript', 'javascript', 'markdown', 'gitcommit'},
-            callback = function() vim.lsp.enable('harper_ls') end,
-        })
     end
 end
 
