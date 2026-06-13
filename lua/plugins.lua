@@ -84,7 +84,17 @@ function M.install_missing()
     local missing_plugins = false
     for name, url in pairs(plugins) do
         local path = pack_path .. "/" .. name
-        if vim.fn.empty(vim.fn.glob(path)) > 0 then
+        
+        -- Check if it exists AND is a valid git repository
+        local is_git_repo = vim.fn.isdirectory(path) == 1 and 
+                            vim.fn.system({ "git", "-C", path, "rev-parse", "--is-inside-work-tree" }):match("true")
+
+        if not is_git_repo then
+            if vim.fn.isdirectory(path) == 1 then
+                vim.notify("Repairing corrupted plugin: " .. name .. "...")
+                vim.fn.delete(path, "rf")
+            end
+            
             missing_plugins = true
             vim.notify("Installing " .. name .. "...")
             vim.fn.system({ "git", "clone", "--depth", "1", "--quiet", url, path })
