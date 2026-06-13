@@ -1174,13 +1174,33 @@ function M.setup()
             end,
         })
 
-        -- Enable the servers
-        vim.lsp.enable('lua_ls')
-        vim.lsp.enable('pyright')
-        vim.lsp.enable('ts_ls')
-        vim.lsp.enable('yamlls')
-        vim.lsp.enable('bashls')
-        vim.lsp.enable('harper_ls')
+        -- LSP Configuration: Use FileType autocommands to automatically
+        -- enable LSP servers for relevant filetypes.
+        vim.api.nvim_create_autocmd('FileType', {
+            pattern = 'lua',
+            callback = function() vim.lsp.enable('lua_ls') end,
+        })
+        vim.api.nvim_create_autocmd('FileType', {
+            pattern = {'sh', 'bash', 'zsh'},
+            callback = function() vim.lsp.enable('bashls') end,
+        })
+        vim.api.nvim_create_autocmd('FileType', {
+            pattern = 'python',
+            callback = function() vim.lsp.enable('pyright') end,
+        })
+        vim.api.nvim_create_autocmd('FileType', {
+            pattern = 'yaml',
+            callback = function() vim.lsp.enable('yamlls') end,
+        })
+        vim.api.nvim_create_autocmd('FileType', {
+            pattern = {'typescript', 'javascript', 'typescriptreact'},
+            callback = function() vim.lsp.enable('ts_ls') end,
+        })
+        -- Harper-ls is a general-purpose linting tool, attach to all text-based files
+        vim.api.nvim_create_autocmd('FileType', {
+            pattern = {'lua', 'python', 'sh', 'bash', 'zsh', 'yaml', 'typescript', 'javascript', 'markdown', 'gitcommit'},
+            callback = function() vim.lsp.enable('harper_ls') end,
+        })
     end
 end
 
