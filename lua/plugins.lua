@@ -1183,7 +1183,13 @@ function M.setup()
         })
         vim.api.nvim_create_autocmd('FileType', {
             pattern = {'sh', 'bash', 'zsh'},
-            callback = function() vim.lsp.enable('bashls') end,
+            callback = function()
+                vim.lsp.start({
+                    name = 'bashls',
+                    cmd = {'bash-language-server', 'start'},
+                    root_dir = vim.fs.dirname(vim.fs.find({'.git'}, {upward=true})[1] or vim.fn.expand('%:p:h'))
+                })
+            end,
         })
         vim.api.nvim_create_autocmd('FileType', {
             pattern = 'python',
