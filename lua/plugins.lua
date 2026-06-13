@@ -239,10 +239,8 @@ function M.setup()
     M.check_for_weekly_update()
 
     -- 2. Load into current session
-    for name, _ in pairs(plugins) do
-        vim.cmd('packadd ' .. name)
-    end
-
+    -- Packages in 'start/' are loaded automatically by Neovim.
+    
     -- 4. PLUGIN-SPECIFIC CONFIGURATIONS
 
     -- Colorscheme: Apply Meowsoot
