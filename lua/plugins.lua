@@ -87,7 +87,7 @@ function M.install_missing()
         if vim.fn.empty(vim.fn.glob(path)) > 0 then
             missing_plugins = true
             vim.notify("Installing " .. name .. "...")
-            vim.fn.system({ "git", "clone", "--depth", "1", url, path })
+            vim.fn.system({ "git", "clone", "--depth", "1", "--quiet", url, path })
 
             -- Special Case: vim-dirtytalk needs to compile its word list after installation.
             if name == "vim-dirtytalk" then
