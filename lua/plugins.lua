@@ -1149,10 +1149,9 @@ function M.setup()
             root_dir = vim.loop.cwd()
         })
         
-        -- Safe blocks for common servers to prevent crashes (explicit settings object required)
-        vim.lsp.config('harper_ls', { settings = {} })
-        vim.lsp.config('pyright', { settings = {} })
-        vim.lsp.config('ts_ls', { settings = {} })
+        vim.lsp.config('bashls', {
+            filetypes = {'sh', 'bash', 'zsh'},
+        })
         vim.lsp.config('yamlls', { settings = {} })
         vim.lsp.config('bashls', { settings = {} })
 
