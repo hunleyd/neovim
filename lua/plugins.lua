@@ -1143,25 +1143,28 @@ function M.setup()
     local status_mason_lsp, mason_lsp = pcall(require, 'mason-lspconfig')
 
     if status_mason and status_mason_lsp then
-        -- Native LSP configuration: merges with nvim-lspconfig defaults
+        -- 1. Configure LSP Servers FIRST
         vim.lsp.config('lua_ls', { 
             root_markers = { '.luarc.json', '.git' },
             root_dir = vim.loop.cwd()
         })
-        
         vim.lsp.config('bashls', {
             filetypes = {'sh', 'bash', 'zsh'},
+            settings = {},
         })
+        vim.lsp.config('harper_ls', { settings = {} })
+        vim.lsp.config('pyright', { settings = {} })
+        vim.lsp.config('ts_ls', { settings = {} })
         vim.lsp.config('yamlls', { settings = {} })
-        vim.lsp.config('bashls', { settings = {} })
 
+        -- 2. Setup Mason
         mason.setup()
         mason_lsp.setup({
             ensure_installed = { "lua_ls", "pyright", "ts_ls", "yamlls", "bashls", "harper_ls" },
-            automatic_enable = false, -- Enable manually to ensure our configs are applied
+            automatic_enable = false,
         })
-
-        -- Default LSP keymaps using the native LspAttach event
+        
+        -- 3. Setup LSP Attachment autocommands
         vim.api.nvim_create_autocmd('LspAttach', {
             callback = function(event)
                 local opts = { buffer = event.buf }
@@ -1173,8 +1176,7 @@ function M.setup()
             end,
         })
 
-        -- LSP Configuration: Use FileType autocommands to automatically
-        -- enable LSP servers for relevant filetypes.
+        -- 4. Enable servers via autocommands
         vim.api.nvim_create_autocmd('FileType', {
             pattern = 'lua',
             callback = function() vim.lsp.enable('lua_ls') end,
@@ -1195,7 +1197,6 @@ function M.setup()
             pattern = {'typescript', 'javascript', 'typescriptreact'},
             callback = function() vim.lsp.enable('ts_ls') end,
         })
-        -- Harper-ls is a general-purpose linting tool, attach to all text-based files
         vim.api.nvim_create_autocmd('FileType', {
             pattern = {'lua', 'python', 'sh', 'bash', 'zsh', 'yaml', 'typescript', 'javascript', 'markdown', 'gitcommit'},
             callback = function() vim.lsp.enable('harper_ls') end,
