@@ -909,8 +909,13 @@ function M.setup()
         end
 
         -- Native Diagnostics: Configure how Neovim displays errors and warnings.
-        -- We configure virtual text to only show on the line your cursor is currently on.
-        -- This keeps the buffer clean while still giving you immediate feedback.
+        -- We define signs explicitly so they show up in the gutter.
+        local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
+        for type, icon in pairs(signs) do
+            local hl = "DiagnosticSign" .. type
+            vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+        end
+
         vim.diagnostic.config({
             virtual_text = {
                 prefix = '●', -- Use a clean dot instead of standard text
