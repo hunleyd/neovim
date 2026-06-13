@@ -106,14 +106,26 @@ autocmd('BufWinEnter', {
     end,
 })
 
--- 5. FILETYPE DETECTION
--- Force zsh filetype for zshrc files.
-autocmd({"BufEnter"}, {
-    group = augroup('ZshFiletype', { clear = true }),
-    pattern = "*/.config/zsh/*",
+-- 7. LSP AUTO-ATTACHMENT
+-- Automatically attach relevant LSP servers based on filetype.
+local lsp_augroup = augroup('LspAutoAttach', { clear = true })
+
+autocmd({'FileType', 'BufEnter'}, {
+    group = lsp_augroup,
+    pattern = 'lua',
+    callback = function() vim.lsp.enable('lua_ls') end,
+})
+
+autocmd({'FileType', 'BufEnter'}, {
+    group = lsp_augroup,
+    pattern = {'sh', 'bash', 'zsh'},
     callback = function()
-        if vim.bo.filetype == "" then
-            vim.bo.filetype = "zsh"
+        if vim.bo.filetype == 'sh' or vim.bo.filetype == 'bash' or vim.bo.filetype == 'zsh' then
+            vim.lsp.start({
+                name = 'bashls',
+                cmd = {'bash-language-server', 'start'},
+                root_dir = vim.fs.dirname(vim.fs.find({'.git'}, {upward=true})[1] or vim.fn.expand('%:p:h'))
+            })
         end
     end,
 })
