@@ -108,7 +108,7 @@ autocmd('BufWinEnter', {
 
 -- 5. FILETYPE DETECTION
 -- Force zsh filetype for zshrc files.
-autocmd({"BufRead", "BufNewFile"}, {
+autocmd({"BufEnter"}, {
     group = augroup('ZshFiletype', { clear = true }),
     pattern = "*/.config/zsh/*",
     callback = function()
