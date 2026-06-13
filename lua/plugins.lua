@@ -233,6 +233,24 @@ function M.setup()
     -- Colorscheme: Apply Meowsoot
     pcall(vim.cmd.colorscheme, "meowsoot")
 
+    M.colors = {
+        bg = '#171616',
+        bg_1 = '#201f1d',
+        bg_2 = '#282625',
+        bg_3 = '#353331',
+        bg_4 = '#454240',
+        fg = '#e2e0df',
+        fg_mute = '#b1ada9',
+        fg_faint = '#85807a',
+        blue = '#96bddf',
+        green = '#98cdaa',
+        magenta = '#eaa4c9',
+        red = '#e99696',
+        yellow = '#dfd286',
+        peach = '#e3b096',
+    }
+    local c = M.colors
+
     -- Treesitter: Structural code understanding and highlighting
     local status_ts, ts_configs = pcall(require, 'nvim-treesitter.configs')
     if status_ts then
@@ -652,12 +670,12 @@ function M.setup()
             },
         })
 
-        -- Startup Screen Highlights: Match Glowbeam palette
-        vim.api.nvim_set_hl(0, 'MiniStarterHeader', { fg = '#51afef' }) -- Blue header
-        vim.api.nvim_set_hl(0, 'MiniStarterItemIndex', { fg = '#da8548' }) -- Orange index
-        vim.api.nvim_set_hl(0, 'MiniStarterItemBullet', { fg = '#51afef' }) -- Blue bullet
-        -- Full line blue highlight on selection
-        vim.api.nvim_set_hl(0, 'MiniStarterCurrent', { bg = '#51afef', fg = '#141414', bold = true })
+        -- Startup Screen Highlights: Match Meowsoot palette
+        vim.api.nvim_set_hl(0, 'MiniStarterHeader', { fg = c.blue }) -- Blue header
+        vim.api.nvim_set_hl(0, 'MiniStarterItemIndex', { fg = c.peach }) -- Peach index
+        vim.api.nvim_set_hl(0, 'MiniStarterItemBullet', { fg = c.blue }) -- Blue bullet
+        -- Full line highlight on selection
+        vim.api.nvim_set_hl(0, 'MiniStarterCurrent', { bg = c.blue, fg = c.bg, bold = true })
 
         -- Enable cursorline and custom trigger highlights in starter buffer
         vim.api.nvim_create_autocmd('FileType', {
@@ -709,19 +727,19 @@ function M.setup()
         -- Statusline Tweaks:
         -- We give the entire statusline a subtle background so it looks like a "bar".
         -- The mode indicators use colored text on this dark background for a clean, modern look.
-        local status_bg = '#1c1f24' -- Glowbeam base1
-        vim.api.nvim_set_hl(0, 'StatusLine', { fg = '#bbc2cf', bg = status_bg }) -- Glowbeam white
-        vim.api.nvim_set_hl(0, 'StatusLineNC', { fg = '#73797e', bg = status_bg }) -- Glowbeam base6
+        local status_bg = c.bg_1
+        vim.api.nvim_set_hl(0, 'StatusLine', { fg = c.fg, bg = status_bg })
+        vim.api.nvim_set_hl(0, 'StatusLineNC', { fg = c.fg_faint, bg = status_bg })
         
-        vim.api.nvim_set_hl(0, 'MiniStatuslineModeNormal',  { fg = '#95e454', bg = status_bg, bold = true }) -- Glowbeam green
-        vim.api.nvim_set_hl(0, 'MiniStatuslineModeInsert',  { fg = '#51afef', bg = status_bg, bold = true }) -- Glowbeam blue
-        vim.api.nvim_set_hl(0, 'MiniStatuslineModeVisual',  { fg = '#c678dd', bg = status_bg, bold = true }) -- Glowbeam magenta
-        vim.api.nvim_set_hl(0, 'MiniStatuslineModeReplace', { fg = '#ff6c6b', bg = status_bg, bold = true }) -- Glowbeam red
-        vim.api.nvim_set_hl(0, 'MiniStatuslineModeCommand', { fg = '#ff6c6b', bg = status_bg, bold = true }) -- Glowbeam red
+        vim.api.nvim_set_hl(0, 'MiniStatuslineModeNormal',  { fg = c.green, bg = status_bg, bold = true })
+        vim.api.nvim_set_hl(0, 'MiniStatuslineModeInsert',  { fg = c.blue, bg = status_bg, bold = true })
+        vim.api.nvim_set_hl(0, 'MiniStatuslineModeVisual',  { fg = c.magenta, bg = status_bg, bold = true })
+        vim.api.nvim_set_hl(0, 'MiniStatuslineModeReplace', { fg = c.red, bg = status_bg, bold = true })
+        vim.api.nvim_set_hl(0, 'MiniStatuslineModeCommand', { fg = c.red, bg = status_bg, bold = true })
         
-        vim.api.nvim_set_hl(0, 'MiniStatuslineDevinfo', { fg = '#9ca0a4', bg = status_bg }) -- Glowbeam base7
-        vim.api.nvim_set_hl(0, 'MiniStatuslineFilename', { fg = '#bbc2cf', bg = status_bg, bold = true }) -- Glowbeam white
-        vim.api.nvim_set_hl(0, 'MiniStatuslineFileinfo', { fg = '#9ca0a4', bg = status_bg }) -- Glowbeam base7
+        vim.api.nvim_set_hl(0, 'MiniStatuslineDevinfo', { fg = c.fg_mute, bg = status_bg })
+        vim.api.nvim_set_hl(0, 'MiniStatuslineFilename', { fg = c.fg, bg = status_bg, bold = true })
+        vim.api.nvim_set_hl(0, 'MiniStatuslineFileinfo', { fg = c.fg_mute, bg = status_bg })
 
         -- GUI-Style Tabline: A custom tabline that looks like physical tabs.
         -- Why: We use a from-scratch function rather than mini.tabline because
@@ -730,20 +748,15 @@ function M.setup()
         -- the precise, high-fidelity Glowbeam aesthetic we want.
         function _G.MyTabLine()
             local s = ""
-            -- In Glowbeam: Normal bg is #141414, TabLine (inactive) bg is #23272e (base3)
-            local bg_active = '#141414' -- black
-            local bg_inactive = '#23272e' -- base3
-            local fg_active = '#51afef' -- blue
-            local fg_inactive = '#9ca0a4' -- base7
-
+            local c = M.colors
             -- Active tab: Uses the main background, blue text, and a blue underline
-            vim.api.nvim_set_hl(0, "TabLineSel", { fg = fg_active, bg = bg_active, bold = true, underline = true, sp = fg_active })
+            vim.api.nvim_set_hl(0, "TabLineSel", { fg = c.blue, bg = c.bg, bold = true, underline = true, sp = c.blue })
             -- Inactive tab: Uses a darker background
-            vim.api.nvim_set_hl(0, "TabLine", { fg = fg_inactive, bg = bg_inactive })
+            vim.api.nvim_set_hl(0, "TabLine", { fg = c.fg_mute, bg = c.bg_2 })
             -- Fill space and separators: Darker background, subdued text color
-            vim.api.nvim_set_hl(0, "TabLineFill", { bg = bg_inactive })
-            vim.api.nvim_set_hl(0, "TabSeparator", { fg = '#3f444a', bg = bg_inactive }) -- base4
-            vim.api.nvim_set_hl(0, "TabLineHiddenMod", { fg = '#ecbe7b', bg = bg_inactive }) -- yellow
+            vim.api.nvim_set_hl(0, "TabLineFill", { bg = c.bg_2 })
+            vim.api.nvim_set_hl(0, "TabSeparator", { fg = c.bg_4, bg = c.bg_2 })
+            vim.api.nvim_set_hl(0, "TabLineHiddenMod", { fg = c.yellow, bg = c.bg_2 })
 
             local active_buf = vim.api.nvim_get_current_buf()
             local n_listed_bufs = 0
