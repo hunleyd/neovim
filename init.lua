@@ -49,5 +49,9 @@ require("autocmds")  -- Background events (smart numbers, persistence, floats)
 -- to maintain absolute control over the load order and keep startup times minimal.
 require("plugins").setup()
 
+-- 5. NATIVE OPTIONAL PLUGINS
+-- Enable the native side-by-side diff tool (Meld replacement)
+vim.cmd("packadd nvim.difftool")
+
 -- Final visual confirmation that the modular load succeeded.
 vim.notify("Neovim 0.12 config initialized!")
