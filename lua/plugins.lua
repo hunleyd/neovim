@@ -222,7 +222,10 @@ function M.setup()
 
     -- Create :PackUpdate command for manual use
     vim.api.nvim_create_user_command("PackUpdate", function() M.update_plugins() end, {})
-    vim.api.nvim_create_user_command("PackTSUpdate", function() vim.cmd("TSUpdate") end, {})
+    vim.api.nvim_create_user_command("PackTSUpdate", function()
+        pcall(require, "nvim-treesitter")
+        vim.cmd("TSUpdate")
+    end, {})
     M.check_for_weekly_update()
 
     -- 4. PLUGIN-SPECIFIC CONFIGURATIONS
