@@ -106,6 +106,18 @@ autocmd('BufWinEnter', {
     end,
 })
 
+-- 5. FILETYPE DETECTION
+-- Force zsh filetype for zshrc files.
+autocmd({"BufRead", "BufNewFile"}, {
+    group = augroup('ZshFiletype', { clear = true }),
+    pattern = "*/.config/zsh/*",
+    callback = function()
+        if vim.bo.filetype == "" then
+            vim.bo.filetype = "zsh"
+        end
+    end,
+})
+
 -------------------------------------------------------------------------------
 -- HANDLED BY MINI.BASICS (autocommands.basic = true):
 -------------------------------------------------------------------------------
